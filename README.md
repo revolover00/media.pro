@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0D0D12,1A1530,2D215E,534AB7&height=220&section=header&text=Baldwin%20Edit%20All&fontSize=38&fontColor=AFA9EC&animation=fadeIn&fontAlignY=38"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0D0D12,1A1530,2D215E,534AB7&height=220&section=header&text=Media%20Pro&fontSize=42&fontColor=AFA9EC&animation=fadeIn&fontAlignY=38"/>
 </div>
 
 <div align="center">
@@ -33,7 +33,7 @@
 </p>
 
 <h2 align="center">
-  🪄 <span style="color:#7F77DD">What is Baldwin Edit All?</span>
+  🪄 <span style="color:#7F77DD">What is Media Pro?</span>
 </h2>
 
 <div align="center">
@@ -42,12 +42,12 @@
       <td width="60%" align="center">
         <br/>
         <h3>📂 Local AI File Processor</h3>
-        <p><b>Baldwin Edit All</b> is a powerful browser-based tool that lets you<br/>
+        <p><b>Media Pro</b> is a powerful browser-based tool that lets you<br/>
         <b>read, edit, merge, and extract</b> content from PDFs, Excel files, and images.<br/>
         Everything runs <b>locally</b> — your files never leave your computer.</p>
         <br/>
         <img src="https://img.shields.io/badge/⭐_No_Upload-100%25_Privacy_First-AFA9EC?style=flat-square"/>
-       </td>
+      </td>
       <td width="40%" align="center">
         <br/>
         🎯 <b>Key Capabilities</b><br/><br/>
@@ -57,7 +57,7 @@
         ✓ Gemini AI Integration<br/>
         ✓ Merge & Split Files<br/>
         <br/>
-       </td>
+      </td>
     </tr>
   </table>
 </div>
@@ -80,25 +80,25 @@
         <b>PDF Processing</b>
         <br/>
         <sub>قراءة، تعديل، دمج، واستخراج النصوص من PDF</sub>
-       </td>
+      </td>
       <td width="25%" align="center">
         <h2>📊</h2>
         <b>Excel Files</b>
         <br/>
         <sub>معالج ملفات XLSX بسرعة عالية</sub>
-       </td>
+      </td>
       <td width="25%" align="center">
         <h2>👁️</h2>
         <b>OCR Technology</b>
         <br/>
         <sub>تحويل الصور إلى نصوص بـ Tesseract.js</sub>
-       </td>
+      </td>
       <td width="25%" align="center">
         <h2>🤖</h2>
         <b>Gemini AI</b>
         <br/>
         <sub>تلخيص وترجمة وتحليل ذكي</sub>
-       </td>
+      </td>
     </tr>
     <tr>
       <td width="25%" align="center">
@@ -106,7 +106,7 @@
         <b>Merge Files</b>
         <br/>
         <sub>دمج ملفات متعددة في ملف واحد</sub>
-       </td>
+      </td>
       <td width="25%" align="center">
         <h2>✂️</h2>
         <b>Split Files</b>
@@ -125,8 +125,8 @@
         <br/>
         <sub>معالجة سريعة في المتصفح</sub>
        </td>
-    </tr>
-  </table>
+     </tr>
+   </table>
 </div>
 
 <p align="center">
@@ -195,6 +195,7 @@ npm run dev
 # 🏗️ Build for production
 bun run build
 
+
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=rect&color=1A1530&height=3&section=header" width="80%"/>
 </div>
@@ -209,11 +210,13 @@ bun run build
   <img src="https://capsule-render.vercel.app/api?type=rect&color=1A1530&height=3&section=header" width="80%"/>
 </div>
 
+
 # Gemini AI Configuration (Optional - for AI features)
 VITE_GEMINI_API_KEY=your_gemini_api_key
 
 # Note: PDF, Excel, and OCR features work without any API keys
 # They run 100% locally in your browser
+
 
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=rect&color=1A1530&height=3&section=header" width="80%"/>
@@ -225,7 +228,7 @@ VITE_GEMINI_API_KEY=your_gemini_api_key
   📁 <span style="color:#7F77DD">Project Structure</span>
 </h2>
 
-Baldwin-edit-all/
+Media-Pro/
 ├── 📂 src/
 │   ├── 📂 components/
 │   │   ├── 📂 ui/              # shadcn/ui components
@@ -252,6 +255,7 @@ Baldwin-edit-all/
 ├── 🎨 tailwind.config.js
 └── 📘 README.md
 
+
 <p align="center">
   <code>═══════════════════════════════════════════════════════════════════</code>
 </p>
@@ -268,17 +272,17 @@ Baldwin-edit-all/
       <td width="33%" align="center">
         <h3>📝 Summarize</h3>
         <sub>تلخيص المستندات الطويلة</sub>
-      </td>
+       </td>
       <td width="33%" align="center">
         <h3>🌐 Translate</h3>
         <sub>ترجمة النصوص بين العربية والإنجليزية</sub>
-      </td>
+       </td>
       <td width="33%" align="center">
         <h3>📊 Analyze</h3>
         <sub>تحليل البيانات واستخراج insights</sub>
-      </td>
-    </tr>
-  </table>
+       </td>
+     </tr>
+   </table>
 </div>
 
 <p align="center">
@@ -330,7 +334,7 @@ Baldwin-edit-all/
           <li>✓ File Merge & Split</li>
           <li>✓ Gemini AI Integration</li>
         </ul>
-      </td>
+       </td>
       <td width="50%">
         <h3>🚧 In Progress</h3>
         <ul>
@@ -340,9 +344,9 @@ Baldwin-edit-all/
           <li>⬜ Export to Multiple Formats</li>
           <li>⬜ PWA Installation</li>
         </ul>
-      </td>
-    </tr>
-  </table>
+       </td>
+     </tr>
+   </table>
 </div>
 
 <p align="center">
@@ -357,7 +361,7 @@ Baldwin-edit-all/
 
 <div align="center">
   <a href="#" target="_blank">
-    <img src="https://via.placeholder.com/900x500/1A1530/7F77DD?text=Baldwin+Edit+All+Demo+Screenshot" alt="Baldwin Edit All Preview" width="90%"/>
+    <img src="https://via.placeholder.com/900x500/1A1530/7F77DD?text=Media+Pro+Demo+Screenshot" alt="Media Pro Preview" width="90%"/>
   </a>
   <br/>
   <sub>📸 Replace placeholder with actual screenshot</sub>
@@ -381,21 +385,21 @@ Baldwin-edit-all/
         <b>Privacy First</b>
         <br/>
         <sub>Your files never leave your device</sub>
-      </td>
+       </td>
       <td width="33%" align="center">
         <h3>⚡</h3>
         <b>Lightning Fast</b>
         <br/>
         <sub>No upload = instant processing</sub>
-      </td>
+       </td>
       <td width="33%" align="center">
         <h3>🌍</h3>
         <b>Offline Ready</b>
         <br/>
         <sub>Works without internet (except AI features)</sub>
-      </td>
-    </tr>
-  </table>
+       </td>
+     </tr>
+   </table>
 </div>
 
 <p align="center">
@@ -437,4 +441,3 @@ Baldwin-edit-all/
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=534AB7,2D215E,1A1530,0D0D12&height=120&section=footer"/>
 </div>
-```
