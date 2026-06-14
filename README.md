@@ -1,443 +1,156 @@
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0D0D12,1A1530,2D215E,534AB7&height=220&section=header&text=Media%20Pro&fontSize=42&fontColor=AFA9EC&animation=fadeIn&fontAlignY=38"/>
-</div>
-
-<div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=24&duration=3500&pause=800&color=7F77DD&center=true&vCenter=true&width=700&lines=Local+AI+File+Processor;Read+%7C+Edit+%7C+Merge+%7C+Extract;PDF+%2B+Excel+%2B+OCR+%2B+AI;Works+100%25+in+Your+Browser" alt="Typing SVG"/>
-</div>
-
-<br/>
-
-<div align="center">
-  <img src="https://img.shields.io/badge/🟢_Status-Working-1D9E75?style=for-the-badge&logoColor=white&labelColor=0D1E1A"/>
-  <img src="https://img.shields.io/badge/🔒_Privacy-100%25_Local-7F77DD?style=for-the-badge&logoColor=white&labelColor=1A1530"/>
-  <img src="https://img.shields.io/badge/📜_License-MIT-534AB7?style=for-the-badge&logoColor=white&labelColor=1A1530"/>
-  <img src="https://img.shields.io/github/stars/revolover00/Baldwin-edit-all?style=for-the-badge&logo=github&logoColor=white&color=7F77DD&labelColor=1A1530&label=⭐%20Stars"/>
-</div>
-
-<br/>
-
-<div align="center">
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white"/>
-  <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB"/>
-  <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Tailwind-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Tesseract.js-534AB7?style=flat-square&logo=tesseract&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Gemini_AI-886FBF?style=flat-square&logo=google&logoColor=white"/>
-</div>
-
----
+# <p align="center"><img src="https://capsule-render.vercel.app/api?type=waving&color=26215C,534AB7,7F77DD&height=160&section=header&text=FileForge%20Pro&fontSize=40&fontColor=ffffff&animation=fadeIn" alt="FileForge Pro Header" /></p>
 
 <p align="center">
-  <code>═══════════════════════════════════════════════════════════════════</code>
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=20&duration=4000&pause=1000&color=7F77DD&center=true&vCenter=true&width=600&height=50&lines=Your+Ultimate+All-in-One+Media+Forge;Powerful+Locally-Powered+AI+Processing;Smart+PDF+%26+Image+Batch+Converter;100%25+Client-Side+%26+Privacy-First" alt="Typing Animation Logo" />
 </p>
-
-<h2 align="center">
-  🪄 <span style="color:#7F77DD">What is Media Pro?</span>
-</h2>
-
-<div align="center">
-  <table>
-    <tr>
-      <td width="60%" align="center">
-        <br/>
-        <h3>📂 Local AI File Processor</h3>
-        <p><b>Media Pro</b> is a powerful browser-based tool that lets you<br/>
-        <b>read, edit, merge, and extract</b> content from PDFs, Excel files, and images.<br/>
-        Everything runs <b>locally</b> — your files never leave your computer.</p>
-        <br/>
-        <img src="https://img.shields.io/badge/⭐_No_Upload-100%25_Privacy_First-AFA9EC?style=flat-square"/>
-      </td>
-      <td width="40%" align="center">
-        <br/>
-        🎯 <b>Key Capabilities</b><br/><br/>
-        ✓ PDF Read & Edit<br/>
-        ✓ Excel/XLSX Processing<br/>
-        ✓ OCR (Image to Text)<br/>
-        ✓ Gemini AI Integration<br/>
-        ✓ Merge & Split Files<br/>
-        <br/>
-      </td>
-    </tr>
-  </table>
-</div>
 
 <p align="center">
-  <code>═══════════════════════════════════════════════════════════════════</code>
-</p>
-
----
-
-<h2 align="center">
-  ✨ <span style="color:#7F77DD">Features</span>
-</h2>
-
-<div align="center">
-  <table>
-    <tr>
-      <td width="25%" align="center">
-        <h2>📄</h2>
-        <b>PDF Processing</b>
-        <br/>
-        <sub>قراءة، تعديل، دمج، واستخراج النصوص من PDF</sub>
-      </td>
-      <td width="25%" align="center">
-        <h2>📊</h2>
-        <b>Excel Files</b>
-        <br/>
-        <sub>معالج ملفات XLSX بسرعة عالية</sub>
-      </td>
-      <td width="25%" align="center">
-        <h2>👁️</h2>
-        <b>OCR Technology</b>
-        <br/>
-        <sub>تحويل الصور إلى نصوص بـ Tesseract.js</sub>
-      </td>
-      <td width="25%" align="center">
-        <h2>🤖</h2>
-        <b>Gemini AI</b>
-        <br/>
-        <sub>تلخيص وترجمة وتحليل ذكي</sub>
-      </td>
-    </tr>
-    <tr>
-      <td width="25%" align="center">
-        <h2>🔗</h2>
-        <b>Merge Files</b>
-        <br/>
-        <sub>دمج ملفات متعددة في ملف واحد</sub>
-      </td>
-      <td width="25%" align="center">
-        <h2>✂️</h2>
-        <b>Split Files</b>
-        <br/>
-        <sub>تقسيم الملفات الكبيرة إلى أجزاء</sub>
-       </td>
-      <td width="25%" align="center">
-        <h2>🔐</h2>
-        <b>100% Local</b>
-        <br/>
-        <sub>الملفات لا ترفع لأي سيرفر</sub>
-       </td>
-      <td width="25%" align="center">
-        <h2>⚡</h2>
-        <b>Fast</b>
-        <br/>
-        <sub>معالجة سريعة في المتصفح</sub>
-       </td>
-     </tr>
-   </table>
-</div>
-
-<p align="center">
-  <code>═══════════════════════════════════════════════════════════════════</code>
-</p>
-
----
-
-<h2 align="center">
-  🛠️ <span style="color:#7F77DD">Tech Stack</span>
-</h2>
-
-<div align="center">
-
-| Category | Technologies |
-|:--------:|:-------------|
-| 🎨 **Frontend** | `TypeScript 5.8` `React 18` `Vite 5.4` `TailwindCSS 3.4` |
-| 🧩 **UI Components** | `shadcn/ui` `Framer Motion` |
-| 📄 **PDF Processing** | `pdf-lib` `pdf.js` |
-| 📊 **Excel Processing** | `SheetJS (XLSX)` |
-| 👁️ **OCR Engine** | `Tesseract.js` |
-| 🧠 **AI Integration** | `Google Gemini API 2.0` |
-| 🚀 **Deployment** | `Vercel` |
-
-</div>
-
-<br/>
-
-<div align="center">
-  <img src="https://skillicons.dev/icons?i=ts,react,vite,tailwind,vercel" height="50"/>
-</div>
-
-<p align="center">
-  <code>═══════════════════════════════════════════════════════════════════</code>
-</p>
-
----
-
-<h2 align="center">
-  🚀 <span style="color:#7F77DD">Quick Start</span>
-</h2>
-
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=1A1530&height=3&section=header" width="80%"/>
-</div>
-
-# 📦 Clone the repository
-git clone https://github.com/revolover00/Baldwin-edit-all.git
-
-# 📂 Navigate to project
-cd Baldwin-edit-all
-
-# ⚡ Install dependencies
-bun install
-# or
-npm install
-
-# 🔑 Setup environment variables (for Gemini AI)
-cp .env.example .env
-
-# 🎯 Start development server
-bun run dev
-# or
-npm run dev
-
-# 🏗️ Build for production
-bun run build
-
-
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=1A1530&height=3&section=header" width="80%"/>
-</div>
-
----
-
-<h2 align="center">
-  🔐 <span style="color:#7F77DD">Environment Variables</span>
-</h2>
-
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=1A1530&height=3&section=header" width="80%"/>
-</div>
-
-
-# Gemini AI Configuration (Optional - for AI features)
-VITE_GEMINI_API_KEY=your_gemini_api_key
-
-# Note: PDF, Excel, and OCR features work without any API keys
-# They run 100% locally in your browser
-
-
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=1A1530&height=3&section=header" width="80%"/>
-</div>
-
----
-
-<h2 align="center">
-  📁 <span style="color:#7F77DD">Project Structure</span>
-</h2>
-
-Media-Pro/
-├── 📂 src/
-│   ├── 📂 components/
-│   │   ├── 📂 ui/              # shadcn/ui components
-│   │   ├── 📄 PDFEditor.tsx    # PDF read/edit/merge
-│   │   ├── 📊 ExcelViewer.tsx  # Excel/XLSX processor
-│   │   ├── 👁️ OCRScanner.tsx   # Image to text OCR
-│   │   ├── 🤖 AIAssistant.tsx  # Gemini AI integration
-│   │   └── 📱 Navbar.tsx       # Navigation
-│   ├── 📂 lib/
-│   │   ├── 📄 pdfUtils.ts      # PDF processing helpers
-│   │   ├── 📊 excelUtils.ts    # Excel processing helpers
-│   │   ├── 👁️ ocrUtils.ts      # Tesseract.js setup
-│   │   └── 🤖 geminiUtils.ts   # Gemini API calls
-│   ├── 📂 hooks/
-│   │   └── useFileHandler.ts   # File upload handling
-│   ├── 📂 styles/
-│   │   └── globals.css
-│   ├── 📱 App.tsx
-│   └── 🚀 main.tsx
-├── 📂 public/
-├── 📄 index.html
-├── 📦 package.json
-├── ⚙️ vite.config.ts
-├── 🎨 tailwind.config.js
-└── 📘 README.md
-
-
-<p align="center">
-  <code>═══════════════════════════════════════════════════════════════════</code>
-</p>
-
----
-
-<h2 align="center">
-  🧠 <span style="color:#7F77DD">AI Features (Gemini API)</span>
-</h2>
-
-<div align="center">
-  <table>
-    <tr>
-      <td width="33%" align="center">
-        <h3>📝 Summarize</h3>
-        <sub>تلخيص المستندات الطويلة</sub>
-       </td>
-      <td width="33%" align="center">
-        <h3>🌐 Translate</h3>
-        <sub>ترجمة النصوص بين العربية والإنجليزية</sub>
-       </td>
-      <td width="33%" align="center">
-        <h3>📊 Analyze</h3>
-        <sub>تحليل البيانات واستخراج insights</sub>
-       </td>
-     </tr>
-   </table>
-</div>
-
-<p align="center">
-  <code>═══════════════════════════════════════════════════════════════════</code>
-</p>
-
----
-
-<h2 align="center">
-  📊 <span style="color:#7F77DD">GitHub Stats</span>
-</h2>
-
-<div align="center">
-  
-| 📈 Metric | Value |
-|:---------:|:-----:|
-| ⭐ **Stars** | ![GitHub Repo stars](https://img.shields.io/github/stars/revolover00/Baldwin-edit-all?style=flat-square&color=7F77DD) |
-| 🍴 **Forks** | ![GitHub forks](https://img.shields.io/github/forks/revolover00/Baldwin-edit-all?style=flat-square&color=534AB7) |
-| 👀 **Watchers** | ![GitHub watchers](https://img.shields.io/github/watchers/revolover00/Baldwin-edit-all?style=flat-square&color=AFA9EC) |
-| 📦 **Version** | `v1.0.0` |
-
-</div>
-
-<br/>
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=revolover00&repo=Baldwin-edit-all&theme=tokyonight&bg_color=0D0D12&border_color=534AB7&title_color=AFA9EC&icon_color=7F77DD&text_color=C8C4E8"/>
-</div>
-
-<p align="center">
-  <code>═══════════════════════════════════════════════════════════════════</code>
-</p>
-
----
-
-<h2 align="center">
-  🗺️ <span style="color:#7F77DD">Roadmap</span>
-</h2>
-
-<div align="center">
-  <table>
-    <tr>
-      <td width="50%">
-        <h3>✅ Completed</h3>
-        <ul>
-          <li>✓ PDF Reading & Editing</li>
-          <li>✓ Excel/XLSX Processing</li>
-          <li>✓ OCR (Image to Text)</li>
-          <li>✓ File Merge & Split</li>
-          <li>✓ Gemini AI Integration</li>
-        </ul>
-       </td>
-      <td width="50%">
-        <h3>🚧 In Progress</h3>
-        <ul>
-          <li>⬜ Word (DOCX) Support</li>
-          <li>⬜ PPTX Support</li>
-          <li>⬜ Batch Processing</li>
-          <li>⬜ Export to Multiple Formats</li>
-          <li>⬜ PWA Installation</li>
-        </ul>
-       </td>
-     </tr>
-   </table>
-</div>
-
-<p align="center">
-  <code>═══════════════════════════════════════════════════════════════════</code>
-</p>
-
----
-
-<h2 align="center">
-  🖼️ <span style="color:#7F77DD">Preview</span>
-</h2>
-
-<div align="center">
-  <a href="#" target="_blank">
-    <img src="https://via.placeholder.com/900x500/1A1530/7F77DD?text=Media+Pro+Demo+Screenshot" alt="Media Pro Preview" width="90%"/>
+  <a href="https://github.com/fileforge-dev/fileforge-pro">
+    <img src="https://img.shields.io/github/stars/fileforge-dev/fileforge-pro?style=for-the-badge&color=7F77DD&logo=github" alt="Stars Badge" />
   </a>
-  <br/>
-  <sub>📸 Replace placeholder with actual screenshot</sub>
-</div>
-
-<p align="center">
-  <code>═══════════════════════════════════════════════════════════════════</code>
+  <a href="https://github.com/fileforge-dev/fileforge-pro/network/members">
+    <img src="https://img.shields.io/github/forks/fileforge-dev/fileforge-pro?style=for-the-badge&color=534AB7&logo=github" alt="Forks Badge" />
+  </a>
+  <a href="https://github.com/fileforge-dev/fileforge-pro/issues">
+    <img src="https://img.shields.io/github/issues/fileforge-dev/fileforge-pro?style=for-the-badge&color=26215C" alt="Issues Badge" />
+  </a>
 </p>
 
 ---
 
-<h2 align="center">
-  💡 <span style="color:#7F77DD">Why Local Processing?</span>
-</h2>
+## 🌟 Introduction
 
-<div align="center">
-  <table>
-    <tr>
-      <td width="33%" align="center">
-        <h3>🔒</h3>
-        <b>Privacy First</b>
-        <br/>
-        <sub>Your files never leave your device</sub>
-       </td>
-      <td width="33%" align="center">
-        <h3>⚡</h3>
-        <b>Lightning Fast</b>
-        <br/>
-        <sub>No upload = instant processing</sub>
-       </td>
-      <td width="33%" align="center">
-        <h3>🌍</h3>
-        <b>Offline Ready</b>
-        <br/>
-        <sub>Works without internet (except AI features)</sub>
-       </td>
-     </tr>
-   </table>
-</div>
+**FileForge Pro** is a comprehensive, local-first, privacy-respecting file processing and transformation workbench. Built using **React 18, Vite, TypeScript, and Transformers.js**, it runs completely in your web browser. 
 
-<p align="center">
-  <code>═══════════════════════════════════════════════════════════════════</code>
-</p>
+Unlike conventional file compressors or classifiers, **no files are ever uploaded to any servers**. Everything from OCR, face detection, background removal, object detection, file renaming, to PDF form filling and checksum compilation is performed 100% on sandboxed local threads using your GPU or CPU.
 
 ---
 
-<h2 align="center">
-  🤝 <span style="color:#7F77DD">Connect With Me</span>
-</h2>
+## 🛡️ Zero-Server Privacy-First Architecture
 
-<div align="center">
-  <br/>
-  <a href="https://github.com/revolover00">
-    <img src="https://img.shields.io/badge/GitHub-revolover00-1A1530?style=for-the-badge&logo=github&logoColor=white"/>
-  </a>
-  <a href="https://linkedin.com/in/revolover00">
-    <img src="https://img.shields.io/badge/LinkedIn-Baldwin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
-  </a>
-  <a href="mailto:baldwin@revo-code.com">
-    <img src="https://img.shields.io/badge/Email-baldwin@revo--code.com-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
-  </a>
-  <br/><br/>
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=7F77DD&height=2&section=header" width="60%"/>
-  <br/>
-  <h3>💬 Open for Freelance & Remote Work</h3>
-  <p><b>Egypt 🇪🇬 → Worldwide 🌍</b></p>
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=7F77DD&height=2&section=header" width="60%"/>
-</div>
+```
+[ Your Local Files ] ──────────────────> ( Sandbox Web Workers )
+                                                   │
+                                                   ├─ Local AI Models (Detr-Resnet, Vit-GPT2)
+                                                   ├─ File Decryption and Re-Assembly
+                                                   └─ Cryptographic Audit Logs
+                                                   │
+                                                   ▼
+                                         [ FileForge Pro Dashboard ]
+                                       (No Network Requests Transmitted)
+```
 
-<br/>
+By leveraging local hardware, your documents, proprietary images, and sensitive financial bills remaining fully isolated within the client environment. It is the perfect tool for developers, companies, and individuals seeking elite file wizardry with certified compliance.
 
-<div align="center">
-  <sub>Built with ❤️ by <b>Baldwin · revolover00</b> | Revo Code 🔮</sub>
-</div>
+---
 
-<!-- FOOTER WAVE -->
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=534AB7,2D215E,1A1530,0D0D12&height=120&section=footer"/>
-</div>
+## ✨ Features Key Core Modules
+
+### 🖼️ Local Image Transformation & Analytics
+- **Batch Converter & Compressor**: Scale, convert formats (PNG, JPG, WebP), and compress multiple sizes with fine control.
+- **Image Editor & Crop**: Precise aspect-ratio locks, rotation presets, and custom resolution canvas maps.
+- **Deep Metadata Viewer & Hex Dump**: Extract EXIF data coordinates, cameras, dates, and preview file structure.
+- **Local Collage Builder**: Seamless multi-grid designs and spacing layouts.
+
+### 📄 Smart Local PDF Engineering
+- **Merge & Split Multi-Pages**: Reconstitute page orders and split chapters directly online.
+- **Document Protection Engine**: Add AES-256 password protections or unlock protected PDF files.
+- **Form Filler & Stamp Injector**: Fill standard field controls, inject headers/footers, and stamp sequential page numbers.
+
+### 🧠 Local AI & Intelligent OCR
+- **Object Detection ('Xenova/detr-resnet-50')**: Detect elements, draw confidence bounding boxes, and list counters (e.g., 5 persons, 2 cars).
+- **Photo Restorer**: Auto-recover vintage photos, fix scratches, denoise textures, and balance contrast.
+- **Neural Face Detection**: Identify facial bounding landmarks and apply real-time blur overlays for privacy protection.
+- **Smart Text similarity**: Compare text files using semantic space representations.
+- **Multi-Language OCR Scanners**: Extract structured data from tables, receipts, or business cards into downloadable documents.
+
+### 🛠️ Advanced Local Utilities
+- **Batch Renamer**: Apply dynamic naming schemas (fixed text, sequential numbering padding, date prefixes, case mode modifiers) and export as a bundle `.zip`.
+- **Advanced QR Code Suite**: Generate dynamic codes (vCards, Web URLs, secure WiFi credentials, iCalendar events) with interactive logo embedding.
+- **File Inspector & Checksums**: Generate MD5, SHA-1, SHA-256 hashes, view visual Hex registers, and trigger heuristic threat detection logic.
+- **Personal Favorites Dock**: Toggle pinned tool widgets with full drag-and-drop sortable lists.
+- **Operations Log Dashboard**: Audit total session statistics, file savings ratios, actions lists, and export history to `.csv`.
+
+---
+
+## ⚡ Tech Stack Specifications
+
+We combine cutting-edge browser capabilities to power the local pipeline:
+
+*   **Frontend Library**: React 18 (Hooks-first modular composition)
+*   **Module Bundler**: Vite (lightning fast compilation & assets serving)
+*   **Static Compilers**: TypeScript 5+
+*   **Style Framework**: Tailwind CSS (Sophisticated Dark Mode & Responsive layouts)
+*   **Neural Runtime**: Transformers.js (ONNX Runtime Web client inference)
+*   **Cryptographic Core**: Crypto-JS (Local hashing & integrity seals)
+*   **Document Handler**: PDF-Lib (Client-side vector and document painting)
+*   **Compression Engine**: JSZip (Bundling batch exports on the fly)
+*   **Micro Animations Engine**: Motion / React
+*   **Barcodes Compiler**: QRCode (SVG and Canvas vector generator)
+
+---
+
+## 🚀 Quick Launch & Local Installation
+
+### Prerequisites
+Make sure you have Node.js 18+ installed on your developer machine.
+
+### Installation Steps
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/fileforge-dev/fileforge-pro.git
+   cd fileforge-pro
+   ```
+
+2. **Install all dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Start the local server**:
+   ```bash
+   npm run dev
+   ```
+   Open your browser to `http://localhost:3000` to enjoy full offline capabilities!
+
+4. **Build for production deployment**:
+   ```bash
+   npm run build
+   ```
+
+---
+
+## ⌨️ Global Keyboard Acceleration Layouts
+
+To help power users work with maximum speed, FileForge Pro features global keyboard acceleration shortcuts built-in:
+
+| Key Binding | Action Triggered (En / Ar) |
+| :--- | :--- |
+| `Alt + D` | Jump directly to Centered Dashboard / لوحة التحكم |
+| `Alt + S` | Toggle Settings drawer modal / فتح الإعدادات |
+| `Alt + H` | View Operations Log History Dashboard / تاريخ ومؤشرات العمليات |
+| `Alt + K` | Focus top-tier global Filter Search Input / البحث في الأدوات |
+| `Alt + T` | Toggle Global Theme (Light/Dark Mode) / تبديل مظهر النظام |
+
+---
+
+## 🤝 Contribution Guidelines
+
+Contributions make the open-source community an amazing place to learn, inspire, and create:
+
+1. Fork the Project.
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the Branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
+
+---
+
+## 📄 License & Intellectual Context
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<p align="center" style="margin-top: 40px; font-size: 11px; color: #7F77DD;">
+  Made with 💜 by <a href="https://github.com/fileforge-dev" style="color: #7F77DD; font-weight: bold; text-decoration: none;">FileForge Dev Team</a>. Powered exclusively by Client-Side AI.
+</p>
