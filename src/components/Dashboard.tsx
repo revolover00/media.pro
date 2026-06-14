@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Search, Star, ShieldCheck, Zap, HardDrive, Cpu, 
-  RefreshCw, FileImage, Maximize2, Crop, RotateCw, 
+  RefreshCw, FileImage, Maximize2, Minimize2, Crop, RotateCw, 
   Sparkles, Wand2, Palette, Images, Files, Scissors, 
-  Image as ImageIcon, Type, Layers, Info, Lock, Unlock, PenTool, Hash, Heading, Wrench, Contact, Table, FileSearch, Languages, Receipt
+  Image as ImageIcon, Type, Layers, Info, Lock, Unlock, PenTool, Hash, Heading, Wrench, Contact, Table, FileSearch, Languages, Receipt,
+  FolderSync, QrCode, Fingerprint, GitCompare,
+  Video, Music, Camera, Tv, AlignLeft, BookOpen, Volume2, Mic, KeyRound
 } from 'lucide-react';
 import { TabId } from '../types';
 import { translations } from '../translations';
@@ -24,7 +26,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
   historyLength,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState<'all' | 'image' | 'pdf' | 'smart'>('all');
+  const [activeCategory, setActiveCategory] = useState<'all' | 'image' | 'pdf' | 'smart' | 'media' | 'text' | 'other'>('all');
   const [pwaPrompt, setPwaPrompt] = useState<any>(null);
   const [isInstalled, setIsInstalled] = useState(false);
 
@@ -357,6 +359,196 @@ export const Dashboard: React.FC<DashboardProps> = ({
       color: "from-red-600 to-rose-600",
       bgLight: "bg-red-50/80 border-red-200 text-red-600",
       category: "pdf" as const
+    },
+    {
+      id: 'batch-renamer' as TabId,
+      label: t.sidebar.batchRenamer,
+      descAr: "تغيير أسماء مجموعة ملفات دفعة واحدة باستخدام أنماط مخصصة، ترقيم متسلسل، إزالة نصوص وتصدير ZIP.",
+      descEn: "Rename huge sets of files simultaneously. Configure sequences, text replacement patterns, and get structured ZIPs.",
+      icon: FolderSync,
+      color: "from-sky-500 to-blue-650",
+      bgLight: "bg-sky-50/70 border-sky-100 text-sky-600",
+      category: "other" as const
+    },
+    {
+      id: 'qr-generator' as TabId,
+      label: t.sidebar.qrGenerator,
+      descAr: "مولد الباركود QR متطور: صمم رمز استجابة سريعة للنصوص، الروابط، شبكات WiFi، بطاقات vCard أو أحداث التقويم.",
+      descEn: "Generate premium custom QRs: Handles normal text, web links, WiFi endpoints, vCard contact info and static calendar events.",
+      icon: QrCode,
+      color: "from-indigo-655 to-purple-600",
+      bgLight: "bg-indigo-50/70 border-indigo-100 text-indigo-700",
+      category: "other" as const
+    },
+    {
+      id: 'file-info' as TabId,
+      label: t.sidebar.fileInfo,
+      descAr: "محلل ومستكشف بنية الملفات ومجموع المراقبة ومولد التشفير والهاشات MD5 & SHA-256 وعارض الرموز الثنائية Hex Dump.",
+      descEn: "Analyze binary headers, extract detailed metadata, generate cryptographic MD5/SHA-256 hashes, review fully interactive Hex Dump.",
+      icon: Fingerprint,
+      color: "from-slate-600 to-neutral-700",
+      bgLight: "bg-slate-50 border-slate-150 text-slate-700",
+      category: "other" as const
+    },
+    {
+      id: 'file-comparator' as TabId,
+      label: t.sidebar.fileComparator,
+      descAr: "مقارن الملفات والمستندات الذكي: قارن بين بنيتين مشفرتين، ملفّي صور بمسح تفاعلي، أو نصوص مع تحديد الفروقات.",
+      descEn: "Compare images, text contents, or binary arrays. View fully interactive slider overlays or detailed side-by-side modifications.",
+      icon: GitCompare,
+      color: "from-emerald-600 to-cyan-650",
+      bgLight: "bg-emerald-50/70 border-emerald-150 text-emerald-700",
+      category: "other" as const
+    },
+    {
+      id: 'favorites-manager' as TabId,
+      label: t.sidebar.favoritesManager,
+      descAr: "إدارة وترتيب أدواتك المفضلة وتخصيص وترتيب قائمتها بالاختيار والسحب والإفلات وتصدير إعداداتها المفضلة.",
+      descEn: "Reorganize, strip, and order your starred toolsets cleanly using reactive HTML5 drag & drop and backup preferences settings.",
+      icon: Star,
+      color: "from-amber-500 to-orange-500",
+      bgLight: "bg-amber-50/70 border-amber-150 text-amber-600",
+      category: "other" as const
+    },
+    {
+      id: 'video-to-gif' as TabId,
+      label: t.sidebar.videoToGIF,
+      descAr: "تحويل مقاطع الفيديو بشتى الصيغ إلى صور متحركة GIF مع تقطيع واختيار السرعات.",
+      descEn: "Transform high definition videos directly to lightweight animated GIF sequences locally.",
+      icon: Video,
+      color: "from-purple-500 to-indigo-500",
+      bgLight: "bg-purple-50/70 border-purple-100 text-purple-700",
+      category: "media" as const
+    },
+    {
+      id: 'gif-editor' as TabId,
+      label: t.sidebar.gifEditor,
+      descAr: "تعديل وقص وتعديل سرعة إطارات الصور المتحركة GIF وحذف إطارات مخصصة.",
+      descEn: "Advanced frame editor for animated GIFs. Delete individual sheets or adjust loop delay rates.",
+      icon: Layers,
+      color: "from-sky-500 to-indigo-500",
+      bgLight: "bg-sky-50/70 border-sky-100 text-sky-700",
+      category: "media" as const
+    },
+    {
+      id: 'video-compressor' as TabId,
+      label: t.sidebar.videoCompressor,
+      descAr: "ضاغط مقاطع الفيديو مع التحكم بالجودة والأبعاد لتقليص مساحات التخزين فورياً.",
+      descEn: "Client-side video compressor. Strip audio tracks, scale bounding boxes, and crop frames.",
+      icon: Minimize2,
+      color: "from-teal-500 to-emerald-500",
+      bgLight: "bg-teal-50/70 border-teal-100 text-teal-700",
+      category: "media" as const
+    },
+    {
+      id: 'audio-extractor' as TabId,
+      label: t.sidebar.audioExtractor,
+      descAr: "استخراج نقي وخالٍ من الخسارة لمجازي الصوت من مقاطع الفيديو وحفظها كـ WAV.",
+      descEn: "Extract lossless digital soundtracks directly from uploaded video containers in premium WAV quality.",
+      icon: Music,
+      color: "from-pink-500 to-indigo-500",
+      bgLight: "bg-pink-50/70 border-pink-100 text-pink-700",
+      category: "media" as const
+    },
+    {
+      id: 'video-to-images' as TabId,
+      label: t.sidebar.videoToImages,
+      descAr: "تقطيع مقاطع الفيديو إلى سلسلة لقطات صور متتالية وتصديرها دفعة واحدة كملف ZIP.",
+      descEn: "Deconstruct continuous video frames into sequence folders, filter steps, and download as ZIPs.",
+      icon: Images,
+      color: "from-rose-500 to-amber-500",
+      bgLight: "bg-rose-50/70 border-rose-100/70 text-rose-700",
+      category: "media" as const
+    },
+    {
+      id: 'screen-recorder' as TabId,
+      label: t.sidebar.screenRecorder,
+      descAr: "مسجل الشاشة والاجتماعات متطور: سجل المتصفح أو سطح المكتب بجودة صوت وفيديو نقية.",
+      descEn: "Advanced live presentation or meeting screen recording with simultaneous microphone capture.",
+      icon: Tv,
+      color: "from-red-500 to-orange-500",
+      bgLight: "bg-red-50/70 border-red-100 text-red-700",
+      category: "media" as const
+    },
+    {
+      id: 'webcam-capture' as TabId,
+      label: t.sidebar.webcamCapture,
+      descAr: "استوديو الكاميرا الحي: طبق 8 فلاتر ومؤثرات صورية فائقة الجمال والتقط صوراً بكاميرا جهازك.",
+      descEn: "Live camera studio with 8 real-time visual filter layers, flash shutter effect and clipboard copies.",
+      icon: Camera,
+      color: "from-fuchsia-500 to-pink-500",
+      bgLight: "bg-fuchsia-50/70 border-fuchsia-100 text-fuchsia-700",
+      category: "media" as const
+    },
+    {
+      id: 'media-info' as TabId,
+      label: t.sidebar.mediaInfo,
+      descAr: "مفتش ومحلل الميديا: افحص دقة، وحاوية، ومعدلات البت ومدة ملفات الفيديو والصوت بـ PDF معتمد.",
+      descEn: "Decompress container wrappers to review aspect ratios, bitrates, sample rates, & codecs in certified reports.",
+      icon: Info,
+      color: "from-violet-500 to-purple-500",
+      bgLight: "bg-violet-50/70 border-violet-100 text-violet-705",
+      category: "media" as const
+    },
+    {
+      id: 'text-diff' as TabId,
+      label: t.sidebar.textDiff,
+      descAr: "مقارنة النصوص وتحديد الفروقات بين ملفين أو نصين مع إكساء ألوان وتصدير PDF.",
+      descEn: "Compare original and revised texts side-by-side or unified with color markers and PDF prints.",
+      icon: GitCompare,
+      color: "from-indigo-600 to-blue-600",
+      bgLight: "bg-indigo-50/70 border-indigo-105 text-indigo-700",
+      category: "text" as const
+    },
+    {
+      id: 'text-formatter' as TabId,
+      label: t.sidebar.textFormatter,
+      descAr: "منظف ومنسق النصوص وتغيير نمط الأحرف والفرز الأبجدي مجهرياً للأسطر المكتوبة.",
+      descEn: "Clean additional white spacing, reverse or sort lines alphabetically, change lettering cases & count elements.",
+      icon: AlignLeft,
+      color: "from-blue-500 to-sky-500",
+      bgLight: "bg-blue-50/70 border-blue-105 text-blue-700",
+      category: "text" as const
+    },
+    {
+      id: 'markdown-editor' as TabId,
+      label: t.sidebar.markdownEditor,
+      descAr: "محرر مباشر لغة Markdown فائق السرعة بتقسيم الشاشة وتصدير مستندات HTML مذهلة.",
+      descEn: "Live concurrent dual-screen Markdown editor with ready-made README, logs, and technical templates.",
+      icon: BookOpen,
+      color: "from-emerald-500 to-teal-500",
+      bgLight: "bg-emerald-50/70 border-emerald-105 text-emerald-700",
+      category: "text" as const
+    },
+    {
+      id: 'text-to-speech' as TabId,
+      label: t.sidebar.textToSpeech,
+      descAr: "قارئ نصوص ذكي بالصوت مع تتبع للكلمة الحالية وتغيير لهجات التحدث والمؤثرات.",
+      descEn: "Text-to-speech voice synthesizer. Adjust pitch levels, speed rates, and spotlight spoken words.",
+      icon: Volume2,
+      color: "from-pink-500 to-rose-500",
+      bgLight: "bg-pink-50/70 border-pink-105 text-pink-700",
+      category: "text" as const
+    },
+    {
+      id: 'speech-to-text' as TabId,
+      label: t.sidebar.speechToText,
+      descAr: "محول فوري للمقاطع الكلامية المنطوقة ونسخها بالوقت الحقيقي لملفات نصية مرنة.",
+      descEn: "High-accuracy live micro dictation transcriber. Supports dynamic word diagnostics counters.",
+      icon: Mic,
+      color: "from-red-500 to-pink-600",
+      bgLight: "bg-red-50/70 border-red-105 text-red-700",
+      category: "text" as const
+    },
+    {
+      id: 'password-generator' as TabId,
+      label: t.sidebar.passwordGenerator,
+      descAr: "مولّد كلمات المرور المشفرة والأرقام السرية لـ 10 كلمات معاً واستعراض قوة الأمان.",
+      descEn: "Batch generate 10 secure cryptographic non-similar character code passwords with strength benchmarks.",
+      icon: KeyRound,
+      color: "from-amber-500 to-yellow-600",
+      bgLight: "bg-amber-50/70 border-amber-105 text-amber-700",
+      category: "text" as const
     }
   ];
 
@@ -552,6 +744,24 @@ export const Dashboard: React.FC<DashboardProps> = ({
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${activeCategory === 'smart' ? 'bg-purple-600 text-white shadow-md' : 'bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-gray-300 hover:bg-gray-200'}`}
             >
               {t.categories.smart}
+            </button>
+            <button
+              onClick={() => setActiveCategory('media')}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${activeCategory === 'media' ? 'bg-purple-600 text-white shadow-md' : 'bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-gray-300 hover:bg-gray-200'}`}
+            >
+              {t.categories.media}
+            </button>
+            <button
+              onClick={() => setActiveCategory('text')}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${activeCategory === 'text' ? 'bg-purple-600 text-white shadow-md' : 'bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-gray-300 hover:bg-gray-200'}`}
+            >
+              {t.categories.text}
+            </button>
+            <button
+              onClick={() => setActiveCategory('other')}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${activeCategory === 'other' ? 'bg-purple-600 text-white shadow-md' : 'bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-gray-300 hover:bg-gray-200'}`}
+            >
+              {t.categories.other}
             </button>
           </div>
 

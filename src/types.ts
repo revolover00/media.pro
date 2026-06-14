@@ -16,6 +16,12 @@ export type TabId =
   | 'base64-tool'
   | 'image-comparator'
   | 'smart-tools'
+  | 'ai-object-detection'
+  | 'ai-photo-restoration'
+  | 'ai-face-detection'
+  | 'ai-image-search'
+  | 'ai-text-similarity'
+  | 'ai-document-classification'
   | 'pdf-merge'
   | 'pdf-split'
   | 'pdf-to-img'
@@ -33,7 +39,44 @@ export type TabId =
   | 'ocr-multi-language'
   | 'ocr-receipt'
   | 'history'
-  | 'guide';
+  | 'guide'
+  | 'batch-renamer'
+  | 'qr-generator'
+  | 'file-info'
+  | 'file-comparator'
+  | 'favorites-manager'
+  | 'video-to-gif'
+  | 'gif-editor'
+  | 'video-compressor'
+  | 'audio-extractor'
+  | 'video-to-images'
+  | 'screen-recorder'
+  | 'webcam-capture'
+  | 'media-info'
+  | 'text-diff'
+  | 'text-formatter'
+  | 'markdown-editor'
+  | 'text-to-speech'
+  | 'speech-to-text'
+  | 'password-generator'
+  | 'csv-editor'
+  | 'json-formatter'
+  | 'chart-generator'
+  | 'data-extractor'
+  | 'unit-converter'
+  | 'meme-generator'
+  | 'certificate-maker'
+  | 'social-media-banner'
+  | 'gradient-generator'
+  | 'palette-generator'
+  | 'file-encryptor'
+  | 'file-decryptor'
+  | 'metadata-scrubber'
+  | 'file-shredder'
+  | 'steganography-tool'
+  | 'share-menu'
+  | 'onboarding'
+  | 'keyboard-shortcuts';
 
 export interface ProcessedFile {
   id: string;
@@ -57,7 +100,7 @@ export interface HistoryItem {
   timestamp: string;
   originalSize: number;
   processedSize: number;
-  type: 'image' | 'pdf';
+  type: 'image' | 'pdf' | 'media' | 'text' | 'other';
   downloadUrl: string;
   originalUrl?: string; // Optional field for comparison view
 }

@@ -5,8 +5,8 @@ interface UploadZoneProps {
   onFilesSelected: (files: File[]) => void;
   accept: string;
   multiple?: boolean;
-  title: string;
-  subtitle: string;
+  title?: string;
+  subtitle?: string;
   maxSizeMB?: number;
 }
 
@@ -14,8 +14,8 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
   onFilesSelected,
   accept,
   multiple = false,
-  title,
-  subtitle,
+  title = 'اسحب الملف هنا أو انقر للاستيراد',
+  subtitle = 'يدعم كافة التنسيقات المتوافقة والأحجام المناسبة للمعالجة المحلية السريعة',
   maxSizeMB = 50,
 }) => {
   const [isDragActive, setIsDragActive] = useState(false);

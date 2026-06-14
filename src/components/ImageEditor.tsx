@@ -49,7 +49,7 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ onAddHistoryItem }) =>
   const [watermarkSize, setWatermarkSize] = useState<number>(36);
   const [watermarkOpacity, setWatermarkOpacity] = useState<number>(80); // 0 - 100
   const [watermarkFont, setWatermarkFont] = useState<string>('Cairo'); // Cairo, Amiri, Tajawal, Arial
-  const [watermarkLocation, setWatermarkLocation] = useState<'center' | 'top' | 'bottom' | 'bottom-right' | 'bottom-left' | 'top-right'>('bottom-right');
+  const [watermarkLocation, setWatermarkLocation] = useState<'center' | 'top' | 'bottom' | 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left'>('bottom-right');
 
   // Mini preview URLs
   const [previews, setPreviews] = useState<Record<FilterPreset, string>>({

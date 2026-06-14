@@ -31,6 +31,65 @@ import { ImageToSearchablePDF } from './components/tools/ocr/ImageToSearchablePD
 import { MultiLanguageOCR } from './components/tools/ocr/MultiLanguageOCR';
 import { ReceiptScanner } from './components/tools/ocr/ReceiptScanner';
 import { GuideCenter } from './components/GuideCenter';
+
+// Text & Writing Tools
+import { TextDiff } from './components/tools/text/TextDiff';
+import { TextFormatter } from './components/tools/text/TextFormatter';
+import { MarkdownEditor } from './components/tools/text/MarkdownEditor';
+import { TextToSpeech } from './components/tools/text/TextToSpeech';
+import { SpeechToText } from './components/tools/text/SpeechToText';
+import { PasswordGenerator } from './components/tools/text/PasswordGenerator';
+
+// Advanced Local Utilities
+import { BatchRenamer } from './components/tools/utilities/BatchRenamer';
+import { FileInfo } from './components/tools/utilities/FileInfo';
+import { FileComparator } from './components/tools/utilities/FileComparator';
+import { FavoritesManager } from './components/tools/utilities/FavoritesManager';
+import { HistoryDashboard } from './components/tools/utilities/HistoryDashboard';
+import { Onboarding } from './components/tools/utilities/Onboarding';
+import { KeyboardShortcuts } from './components/tools/utilities/KeyboardShortcuts';
+import { ShareMenu } from './components/tools/utilities/ShareMenu';
+
+// Security and Privacy Tools
+import { FileEncryptor } from './components/tools/security/FileEncryptor';
+import { FileDecryptor } from './components/tools/security/FileDecryptor';
+import { MetadataScrubber } from './components/tools/security/MetadataScrubber';
+import { FileShredder } from './components/tools/security/FileShredder';
+import { SteganographyTool } from './components/tools/security/SteganographyTool';
+
+// Data Tools
+import { CSVEditor } from './components/tools/data/CSVEditor';
+import { JSONFormatter } from './components/tools/data/JSONFormatter';
+import { ChartGenerator } from './components/tools/data/ChartGenerator';
+import { DataExtractor } from './components/tools/data/DataExtractor';
+import { UnitConverter } from './components/tools/data/UnitConverter';
+
+// Design Tools
+import { MemeGenerator } from './components/tools/design/MemeGenerator';
+import { CertificateMaker } from './components/tools/design/CertificateMaker';
+import { SocialMediaBanner } from './components/tools/design/SocialMediaBanner';
+import { QRGenerator } from './components/tools/design/QRGenerator';
+import { GradientGenerator } from './components/tools/design/GradientGenerator';
+import { PaletteGenerator } from './components/tools/design/PaletteGenerator';
+
+// Advanced Local AI Tools
+import { ObjectDetector } from './components/tools/ai/ObjectDetector';
+import { PhotoRestorer } from './components/tools/ai/PhotoRestorer';
+import { FaceDetection } from './components/tools/ai/FaceDetection';
+import { ImageSearch } from './components/tools/ai/ImageSearch';
+import { TextSimilarity } from './components/tools/ai/TextSimilarity';
+import { DocumentClassifier } from './components/tools/ai/DocumentClassifier';
+
+// Video & Multimedia tools loaded lazily for elite performance
+const VideoToGIF = React.lazy(() => import('./components/tools/media/VideoToGIF').then(m => ({ default: m.VideoToGIF })));
+const GIFEditor = React.lazy(() => import('./components/tools/media/GIFEditor').then(m => ({ default: m.GIFEditor })));
+const VideoCompressor = React.lazy(() => import('./components/tools/media/VideoCompressor').then(m => ({ default: m.VideoCompressor })));
+const AudioExtractor = React.lazy(() => import('./components/tools/media/AudioExtractor').then(m => ({ default: m.AudioExtractor })));
+const VideoToImages = React.lazy(() => import('./components/tools/media/VideoToImages').then(m => ({ default: m.VideoToImages })));
+const ScreenRecorder = React.lazy(() => import('./components/tools/media/ScreenRecorder').then(m => ({ default: m.ScreenRecorder })));
+const WebcamCapture = React.lazy(() => import('./components/tools/media/WebcamCapture').then(m => ({ default: m.WebcamCapture })));
+const MediaInfo = React.lazy(() => import('./components/tools/media/MediaInfo').then(m => ({ default: m.MediaInfo })));
+
 import { TabId, HistoryItem, AppSettings } from './types';
 import { translations } from './translations';
 import { 
@@ -71,10 +130,13 @@ export default function App() {
     language: 'ar',
     theme: 'dark',
     captionModel: 'Xenova/vit-gpt2-image-captioning',
-    summaryModel: 'Xenova/distilbart-cnn-6-6'
+    summaryModel: 'Xenova/distilbart-cnn-6-6',
+    qaModel: 'Xenova/bert-base-multilingual-cased-question-answering'
   });
   
   const [settingsOpen, setSettingsOpen] = useState<boolean>(false);
+  const [showOnboarding, setShowOnboarding] = useState<boolean>(false);
+  const [showShortcuts, setShowShortcuts] = useState<boolean>(false);
   
   // Toast notifications state
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
@@ -123,6 +185,12 @@ export default function App() {
       }
     }
 
+    // Load onboarding state
+    const onboarded = localStorage.getItem('fileforge_onboarded');
+    if (onboarded !== 'true') {
+      setShowOnboarding(true);
+    }
+
     // Load favorites
     const storedFavorites = localStorage.getItem('promedia_favorites');
     if (storedFavorites) {
@@ -164,6 +232,17 @@ export default function App() {
       if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
     };
   }, []);
+
+  // Redirect overlay tabs instantly to dialog popups
+  useEffect(() => {
+    if (activeTab === 'keyboard-shortcuts') {
+      setShowShortcuts(true);
+      setActiveTab('dashboard');
+    } else if (activeTab === 'onboarding') {
+      setShowOnboarding(true);
+      setActiveTab('dashboard');
+    }
+  }, [activeTab]);
 
   // Sync settings helper
   const handleSaveSettings = (newSettings: Partial<AppSettings>) => {
@@ -306,6 +385,30 @@ export default function App() {
   return (
     <div className={`flex min-h-screen font-sans tracking-wide antialiased ${settings.theme === 'dark' ? 'dark bg-slate-900 text-slate-100' : 'bg-slate-50 text-slate-800'}`}>
       
+      {/* Onboarding Dialog */}
+      {showOnboarding && (
+        <Onboarding 
+          lang={lang} 
+          onCompleteOnboarding={(selectedTools) => {
+            setFavorites(selectedTools);
+            localStorage.setItem('promedia_favorites', JSON.stringify(selectedTools));
+            setShowOnboarding(false);
+          }} 
+          onClose={() => setShowOnboarding(false)} 
+        />
+      )}
+
+      {/* Global Shortcut Event Handlers & Cheat-Sheet */}
+      <KeyboardShortcuts 
+        lang={lang} 
+        isOpen={showShortcuts} 
+        onClose={() => setShowShortcuts(false)} 
+        onSelectTab={(tabId) => {
+          setActiveTab(tabId as TabId);
+          setShowShortcuts(false);
+        }}
+      />
+
       {/* Toast Alert Banner */}
       {toast && (
         <div id="toast-notify" className="fixed bottom-6 left-6 z-50 flex items-center gap-3 bg-slate-900 dark:bg-purple-950 text-white py-3.5 px-6 rounded-2xl shadow-2xl border border-purple-500/30 animate-slideIn">
@@ -483,7 +586,7 @@ export default function App() {
               favorites={favorites} 
               onToggleFavorite={toggleFavorite}
               lang={lang}
-              historyCount={history.length}
+              historyLength={history.length}
             />
           )}
 
@@ -615,12 +718,101 @@ export default function App() {
             <ReceiptScanner lang={lang} onAddHistoryItem={handleAddHistoryItem} />
           )}
 
+          {activeTab === 'ai-object-detection' && (
+            <ObjectDetector lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'ai-photo-restoration' && (
+            <PhotoRestorer lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'ai-face-detection' && (
+            <FaceDetection lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'ai-image-search' && (
+            <ImageSearch lang={lang} />
+          )}
+
+          {activeTab === 'ai-text-similarity' && (
+            <TextSimilarity lang={lang} />
+          )}
+
+          {activeTab === 'ai-document-classification' && (
+            <DocumentClassifier lang={lang} />
+          )}
+
+          {activeTab === 'batch-renamer' && (
+            <BatchRenamer lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'qr-generator' && (
+            <QRGenerator lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'csv-editor' && (
+            <CSVEditor lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'json-formatter' && (
+            <JSONFormatter lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'chart-generator' && (
+            <ChartGenerator lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'data-extractor' && (
+            <DataExtractor lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'unit-converter' && (
+            <UnitConverter lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'meme-generator' && (
+            <MemeGenerator lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'certificate-maker' && (
+            <CertificateMaker lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'social-media-banner' && (
+            <SocialMediaBanner lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'gradient-generator' && (
+            <GradientGenerator lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'palette-generator' && (
+            <PaletteGenerator lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'file-info' && (
+            <FileInfo lang={lang} />
+          )}
+
+          {activeTab === 'file-comparator' && (
+            <FileComparator lang={lang} />
+          )}
+
+          {activeTab === 'favorites-manager' && (
+            <FavoritesManager 
+              lang={lang} 
+              favorites={favorites} 
+              onToggleFavorite={toggleFavorite} 
+              setActiveTab={setActiveTab}
+            />
+          )}
+
           {activeTab === 'history' && (
-            <HistoryList 
+            <HistoryDashboard 
+              lang={lang}
               history={processedHistory} 
               onClearHistory={handleClearHistory} 
-              onDeleteHistoryItem={handleDeleteHistoryItem} 
-              lang={lang}
+              onRemoveHistoryItem={handleDeleteHistoryItem} 
             />
           )}
 
@@ -630,6 +822,72 @@ export default function App() {
               setActiveTab={setActiveTab}
             />
           )}
+
+          {activeTab === 'text-diff' && (
+            <TextDiff lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'text-formatter' && (
+            <TextFormatter lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'markdown-editor' && (
+            <MarkdownEditor lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'text-to-speech' && (
+            <TextToSpeech lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'speech-to-text' && (
+            <SpeechToText lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {activeTab === 'password-generator' && (
+            <PasswordGenerator lang={lang} onAddHistoryItem={handleAddHistoryItem} />
+          )}
+
+          {/* Video & Multimedia Lazy Loaded Sections */}
+          <React.Suspense fallback={
+            <div className="flex flex-col items-center justify-center p-12 text-center space-y-3 bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700/50">
+              <div className="w-8 h-8 rounded-full border-2 border-purple-600 border-t-transparent animate-spin" />
+              <span className="text-xs text-slate-500 font-extrabold">
+                {settings.language === 'ar' ? 'جاري تهيئة وتحميل أداة الوسائط...' : 'Configuring and streaming dynamic media assets...'}
+              </span>
+            </div>
+          }>
+            {activeTab === 'video-to-gif' && (
+              <VideoToGIF lang={lang} onAddHistoryItem={handleAddHistoryItem as any} />
+            )}
+
+            {activeTab === 'gif-editor' && (
+              <GIFEditor lang={lang} onAddHistoryItem={handleAddHistoryItem as any} />
+            )}
+
+            {activeTab === 'video-compressor' && (
+              <VideoCompressor lang={lang} onAddHistoryItem={handleAddHistoryItem as any} />
+            )}
+
+            {activeTab === 'audio-extractor' && (
+              <AudioExtractor lang={lang} onAddHistoryItem={handleAddHistoryItem as any} />
+            )}
+
+            {activeTab === 'video-to-images' && (
+              <VideoToImages lang={lang} onAddHistoryItem={handleAddHistoryItem as any} />
+            )}
+
+            {activeTab === 'screen-recorder' && (
+              <ScreenRecorder lang={lang} onAddHistoryItem={handleAddHistoryItem as any} />
+            )}
+
+            {activeTab === 'webcam-capture' && (
+              <WebcamCapture lang={lang} onAddHistoryItem={handleAddHistoryItem as any} />
+            )}
+
+            {activeTab === 'media-info' && (
+              <MediaInfo lang={lang} onAddHistoryItem={handleAddHistoryItem as any} />
+            )}
+          </React.Suspense>
 
           {/* Core Footer Info Badge */}
           <footer className="pt-6 border-t border-purple-100/50 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400 transition-colors">

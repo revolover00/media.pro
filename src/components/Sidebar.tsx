@@ -3,6 +3,7 @@ import {
   RefreshCw, 
   FileImage, 
   Maximize2, 
+  Minimize2,
   Files, 
   Scissors, 
   Image as ImageIcon, 
@@ -38,9 +39,21 @@ import {
   Table,
   FileSearch,
   Languages,
-  Receipt
+  Receipt,
+  Search,
+  Users,
+  Scale,
+  FolderSync,
+  Eye,
+  QrCode,
+  GitCompare,
+  Fingerprint,
+  Share2,
+  Trash2,
+  Keyboard
 } from 'lucide-react';
 import { TabId } from '../types';
+import { Video, Music, Camera, Tv, AlignLeft, BookOpen, Volume2, Mic, KeyRound } from 'lucide-react';
 import { translations } from '../translations';
 
 interface SidebarProps {
@@ -196,6 +209,42 @@ export const Sidebar: React.FC<SidebarProps> = ({
       category: 'smart'
     },
     {
+      id: 'ai-object-detection' as TabId,
+      label: t.sidebar.aiObjectDetection,
+      icon: Cpu,
+      category: 'smart'
+    },
+    {
+      id: 'ai-photo-restoration' as TabId,
+      label: t.sidebar.aiPhotoRestoration,
+      icon: Eye,
+      category: 'smart'
+    },
+    {
+      id: 'ai-face-detection' as TabId,
+      label: t.sidebar.aiFaceDetection,
+      icon: Users,
+      category: 'smart'
+    },
+    {
+      id: 'ai-image-search' as TabId,
+      label: t.sidebar.aiImageSearch,
+      icon: Search,
+      category: 'smart'
+    },
+    {
+      id: 'ai-text-similarity' as TabId,
+      label: t.sidebar.aiTextSimilarity,
+      icon: Scale,
+      category: 'smart'
+    },
+    {
+      id: 'ai-document-classification' as TabId,
+      label: t.sidebar.aiDocumentClassification,
+      icon: FolderSync,
+      category: 'smart'
+    },
+    {
       id: 'pdf-merge' as TabId,
       label: t.sidebar.pdfMerge,
       icon: Files,
@@ -262,6 +311,84 @@ export const Sidebar: React.FC<SidebarProps> = ({
       category: 'pdf'
     },
     {
+      id: 'file-encryptor' as TabId,
+      label: t.sidebar.fileEncryptor,
+      icon: Lock,
+      category: 'security'
+    },
+    {
+      id: 'file-decryptor' as TabId,
+      label: t.sidebar.fileDecryptor,
+      icon: Unlock,
+      category: 'security'
+    },
+    {
+      id: 'metadata-scrubber' as TabId,
+      label: t.sidebar.metadataScrubber,
+      icon: Eye,
+      category: 'security'
+    },
+    {
+      id: 'file-shredder' as TabId,
+      label: t.sidebar.fileShredder,
+      icon: Trash2,
+      category: 'security'
+    },
+    {
+      id: 'steganography-tool' as TabId,
+      label: t.sidebar.steganographyTool,
+      icon: Eye,
+      category: 'security'
+    },
+    {
+      id: 'batch-renamer' as TabId,
+      label: t.sidebar.batchRenamer,
+      icon: FolderSync,
+      category: 'utilities'
+    },
+    {
+      id: 'qr-generator' as TabId,
+      label: t.sidebar.qrGenerator,
+      icon: QrCode,
+      category: 'other'
+    },
+    {
+      id: 'file-info' as TabId,
+      label: t.sidebar.fileInfo,
+      icon: Fingerprint,
+      category: 'utilities'
+    },
+    {
+      id: 'file-comparator' as TabId,
+      label: t.sidebar.fileComparator,
+      icon: GitCompare,
+      category: 'utilities'
+    },
+    {
+      id: 'favorites-manager' as TabId,
+      label: t.sidebar.favoritesManager,
+      icon: Star,
+      category: 'utilities'
+    },
+    {
+      id: 'share-menu' as TabId,
+      label: t.sidebar.shareMenu,
+      icon: Share2,
+      category: 'utilities'
+    },
+    {
+      id: 'onboarding' as TabId,
+      label: t.sidebar.onboarding,
+      icon: Sparkles,
+      category: 'utilities'
+    },
+    {
+      id: 'keyboard-shortcuts' as TabId,
+      label: t.sidebar.keyboardShortcuts,
+      icon: Keyboard,
+      category: 'utilities'
+    },
+    {
       id: 'history' as TabId,
       label: t.sidebar.history,
       icon: History,
@@ -273,6 +400,150 @@ export const Sidebar: React.FC<SidebarProps> = ({
       icon: HelpCircle,
       category: 'other'
     },
+    {
+      id: 'video-to-gif' as TabId,
+      label: t.sidebar.videoToGIF,
+      icon: Video,
+      category: 'media'
+    },
+    {
+      id: 'gif-editor' as TabId,
+      label: t.sidebar.gifEditor,
+      icon: Layers,
+      category: 'media'
+    },
+    {
+      id: 'video-compressor' as TabId,
+      label: t.sidebar.videoCompressor,
+      icon: Minimize2,
+      category: 'media'
+    },
+    {
+      id: 'audio-extractor' as TabId,
+      label: t.sidebar.audioExtractor,
+      icon: Music,
+      category: 'media'
+    },
+    {
+      id: 'video-to-images' as TabId,
+      label: t.sidebar.videoToImages,
+      icon: Images,
+      category: 'media'
+    },
+    {
+      id: 'screen-recorder' as TabId,
+      label: t.sidebar.screenRecorder,
+      icon: Tv,
+      category: 'media'
+    },
+    {
+      id: 'webcam-capture' as TabId,
+      label: t.sidebar.webcamCapture,
+      icon: Camera,
+      category: 'media'
+    },
+    {
+      id: 'media-info' as TabId,
+      label: t.sidebar.mediaInfo,
+      icon: Info,
+      category: 'media'
+    },
+    {
+      id: 'text-diff' as TabId,
+      label: t.sidebar.textDiff,
+      icon: GitCompare,
+      category: 'text'
+    },
+    {
+      id: 'text-formatter' as TabId,
+      label: t.sidebar.textFormatter,
+      icon: AlignLeft,
+      category: 'text'
+    },
+    {
+      id: 'markdown-editor' as TabId,
+      label: t.sidebar.markdownEditor,
+      icon: BookOpen,
+      category: 'text'
+    },
+    {
+      id: 'text-to-speech' as TabId,
+      label: t.sidebar.textToSpeech,
+      icon: Volume2,
+      category: 'text'
+    },
+    {
+      id: 'speech-to-text' as TabId,
+      label: t.sidebar.speechToText,
+      icon: Mic,
+      category: 'text'
+    },
+    {
+      id: 'password-generator' as TabId,
+      label: t.sidebar.passwordGenerator,
+      icon: KeyRound,
+      category: 'text'
+    },
+    {
+      id: 'csv-editor' as TabId,
+      label: t.sidebar.csvEditor,
+      icon: Table,
+      category: 'data'
+    },
+    {
+      id: 'json-formatter' as TabId,
+      label: t.sidebar.jsonFormatter,
+      icon: Code,
+      category: 'data'
+    },
+    {
+      id: 'chart-generator' as TabId,
+      label: t.sidebar.chartGenerator,
+      icon: Grid,
+      category: 'data'
+    },
+    {
+      id: 'data-extractor' as TabId,
+      label: t.sidebar.dataExtractor,
+      icon: FileSearch,
+      category: 'data'
+    },
+    {
+      id: 'unit-converter' as TabId,
+      label: t.sidebar.unitConverter,
+      icon: Scale,
+      category: 'data'
+    },
+    {
+      id: 'meme-generator' as TabId,
+      label: t.sidebar.memeGenerator,
+      icon: Wand2,
+      category: 'design'
+    },
+    {
+      id: 'certificate-maker' as TabId,
+      label: t.sidebar.certificateMaker,
+      icon: PenTool,
+      category: 'design'
+    },
+    {
+      id: 'social-media-banner' as TabId,
+      label: t.sidebar.socialMediaBanner,
+      icon: Layout,
+      category: 'design'
+    },
+    {
+      id: 'gradient-generator' as TabId,
+      label: t.sidebar.gradientGenerator,
+      icon: Palette,
+      category: 'design'
+    },
+    {
+      id: 'palette-generator' as TabId,
+      label: t.sidebar.paletteGenerator,
+      icon: Layers,
+      category: 'design'
+    },
   ];
 
   const categories = [
@@ -280,6 +551,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { key: 'image', label: t.categories.image },
     { key: 'smart', label: t.categories.smart },
     { key: 'pdf', label: t.categories.pdf },
+    { key: 'media', label: t.categories.media },
+    { key: 'text', label: t.categories.text },
+    { key: 'data', label: t.categories.data },
+    { key: 'design', label: t.categories.design },
+    { key: 'security', label: t.categories.security },
+    { key: 'utilities', label: t.categories.utilities },
     { key: 'other', label: t.categories.other }
   ];
 
@@ -319,8 +596,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
             return (
               <div key={cat.key} className="space-y-1.5">
-                <h3 className="px-3 text-[10px] font-extrabold text-purple-300/50 uppercase tracking-widest">
-                  {cat.label}
+                <h3 className="px-3 text-[10px] font-extrabold text-purple-300/50 uppercase tracking-widest flex items-center justify-between">
+                  <span>{cat.label}</span>
+                  <span className="bg-purple-900/60 text-[9px] text-purple-300 px-1.5 py-0.5 rounded-full font-mono font-bold">{items.length}</span>
                 </h3>
                 <div className="space-y-0.5">
                   {items.map((item) => {
