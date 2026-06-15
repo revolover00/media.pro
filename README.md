@@ -206,7 +206,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 1. **Name Changes**: All references from "FileForge Pro" changed to "Media Pro"
 2. **Color Scheme**: Updated to a modern dark theme (#1A1A2E, #16213E, #0F3460, #E94560)
-3. **Repository Links**: Updated to `mediapro-dev/media-pro`
+3. **Repository Links**: Updated to `Revolver00`
 4. **Added Features**:
    - AVIF format support
    - PDF Compression
