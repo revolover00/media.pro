@@ -244,7 +244,7 @@ export const ImageRemoveBg: React.FC<ImageRemoveBgProps> = ({ onAddHistoryItem }
             {/* Control Column */}
             <div className="lg:col-span-4 space-y-5 bg-purple-50/40 p-5 rounded-2xl border border-purple-100/50">
               <h3 className="font-bold text-sm text-purple-950 flex items-center gap-2">
-                <Palette className="w-4.5 h-4.5 text-purple-600" />
+                <Palette className="w-[18px] h-[18px] text-purple-600" />
                 <span>الخيارات والتحكم</span>
               </h3>
 

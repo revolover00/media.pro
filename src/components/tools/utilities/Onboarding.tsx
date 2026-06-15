@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState } from 'react';
 import { 
@@ -170,7 +169,7 @@ export const Onboarding: React.FC<OnboardingProps> = ({ lang, onCompleteOnboardi
 
             <button
               onClick={handleNext}
-              className="px-5 py-2 bg-slate-900 dark:bg-slate-850 hover:bg-slate-800 text-white rounded-xl shadow-md cursor-pointer flex items-center gap-1 border-0"
+              className="px-5 py-2 bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 text-white rounded-xl shadow-md cursor-pointer flex items-center gap-1 border-0"
             >
               <span>{step === 3 ? (isAr ? 'ابدأ الاستخدام ⭐' : 'Let\'s Go ⭐') : (isAr ? 'التالي' : 'Next')}</span>
               <ChevronRight className="w-4 h-4" />

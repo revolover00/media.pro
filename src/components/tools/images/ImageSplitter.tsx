@@ -234,7 +234,7 @@ export const ImageSplitter: React.FC<ImageSplitterProps> = ({ lang }) => {
                     className={`py-2 px-1 rounded-xl text-xs font-bold border transition-all text-center cursor-pointer
                       ${splitMode === 'grid' 
                         ? 'bg-purple-600 text-white border-purple-600' 
-                        : 'bg-white dark:bg-slate-850 text-gray-700 dark:text-gray-300 border-gray-205'
+                        : 'bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 border-gray-200'
                       }`}
                   >
                     {isAr ? 'شبكة متماثلة' : 'Symmetric Grid'}
@@ -244,7 +244,7 @@ export const ImageSplitter: React.FC<ImageSplitterProps> = ({ lang }) => {
                     className={`py-2 px-1 rounded-xl text-xs font-bold border transition-all text-center cursor-pointer
                       ${splitMode === 'horizontal' 
                         ? 'bg-purple-600 text-white border-purple-600' 
-                        : 'bg-white dark:bg-slate-850 text-gray-700 dark:text-gray-300 border-gray-205'
+                        : 'bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 border-gray-200'
                       }`}
                   >
                     {isAr ? 'أفقي فقط' : 'Rows Only'}
@@ -254,7 +254,7 @@ export const ImageSplitter: React.FC<ImageSplitterProps> = ({ lang }) => {
                     className={`py-2 px-1 rounded-xl text-xs font-bold border transition-all text-center cursor-pointer
                       ${splitMode === 'vertical' 
                         ? 'bg-purple-600 text-white border-purple-600' 
-                        : 'bg-white dark:bg-slate-850 text-gray-700 dark:text-gray-300 border-gray-205'
+                        : 'bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 border-gray-200'
                       }`}
                   >
                     {isAr ? 'عمودي فقط' : 'Columns Only'}

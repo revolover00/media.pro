@@ -24,9 +24,11 @@ import JSZip from 'jszip';
 interface PdfToolsProps {
   toolType: 'merge' | 'split' | 'to-img';
   onAddHistoryItem: (item: Omit<HistoryItem, 'id' | 'timestamp' | 'downloadUrl'>, blob: Blob) => string;
+  lang?: 'ar' | 'en';
 }
 
-export const PdfTools: React.FC<PdfToolsProps> = ({ toolType, onAddHistoryItem }) => {
+export const PdfTools: React.FC<PdfToolsProps> = ({ toolType, onAddHistoryItem, lang = "ar" }) => {
+  const isAr = lang === "ar";
   // MERGE STATES
   const [mergeFiles, setMergeFiles] = useState<File[]>([]);
   const [mergePagesInfo, setMergePagesInfo] = useState<Record<string, number>>({});
@@ -277,9 +279,9 @@ export const PdfTools: React.FC<PdfToolsProps> = ({ toolType, onAddHistoryItem }
       <div className="bg-white p-6 rounded-3xl shadow-sm border border-purple-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <h2 className="text-xl font-bold text-purple-950">
-            {toolType === 'merge' && '📚 دمج ملفات PDF المتعددة'}
-            {toolType === 'split' && '✂️ تقسيم ملف PDF وتنزيل الأوراق'}
-            {toolType === 'to-img' && '🖼️ تحويل صفحات PDF إلى صور JPG'}
+            {toolType === 'merge' && (isAr ? '📚 دمج ملفات PDF المتعددة' : '📚 Merge Multiple PDF Files')}
+            {toolType === 'split' && (isAr ? '✂️ تقسيم ملف PDF وتنزيل الأوراق' : '✂️ Split PDF and Extract Pages')}
+            {toolType === 'to-img' && (isAr ? '🖼️ تحويل صفحات PDF إلى صور JPG' : '🖼️ Convert PDF Pages to JPG Images')}
           </h2>
           <p className="text-sm text-gray-500 mt-1">
             {toolType === 'merge' && 'قم بتحميل ملفين أو أكثر من وثائق PDF، وأعد ترتيب ظهورهم، ثم ادمجهم في ملف واحد.'}
@@ -400,8 +402,8 @@ export const PdfTools: React.FC<PdfToolsProps> = ({ toolType, onAddHistoryItem }
             {resultPdf && (
               <div className="bg-purple-900 text-white p-6 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
                 <div>
-                  <h4 className="font-bold text-sm">تم دمج ملفاتك بنجاح باهر!</h4>
-                  <p className="text-xs text-purple-200 mt-1">الحجم الإجمالي للملف الناتج: {formatBytes(resultPdf.size)}</p>
+                  <h4 className="font-bold text-sm">{isAr ? 'تم دمج ملفاتك بنجاح باهر!' : 'Your files have been successfully merged!'}</h4>
+                  <p className="text-xs text-purple-200 mt-1">{isAr ? 'الحجم الإجمالي للملف الناتج:' : 'Total Output File Size:'} {formatBytes(resultPdf.size)}</p>
                 </div>
                 <button
                   id="download-merged-pdf-btn"

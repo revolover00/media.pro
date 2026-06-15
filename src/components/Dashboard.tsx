@@ -5,7 +5,7 @@ import {
   Sparkles, Wand2, Palette, Images, Files, Scissors, 
   Image as ImageIcon, Type, Layers, Info, Lock, Unlock, PenTool, Hash, Heading, Wrench, Contact, Table, FileSearch, Languages, Receipt,
   FolderSync, QrCode, Fingerprint, GitCompare,
-  Video, Music, Camera, Tv, AlignLeft, BookOpen, Volume2, Mic, KeyRound
+  Video, Music, Camera, Tv, AlignLeft, BookOpen, Volume2, Mic, KeyRound, Eye, Trash2, Share2
 } from 'lucide-react';
 import { TabId } from '../types';
 import { translations } from '../translations';
@@ -67,8 +67,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
     };
 
     setStats({
-      filesProcessed: Math.max(historyLength, totalCount, 3), // nice seed statistics
-      spaceSaved: formatSize(savedBytes || 4820), // nice seed space
+      filesProcessed: Math.max(historyLength, totalCount, 0),
+      spaceSaved: formatSize(savedBytes),
     });
 
     // PWA Prompt capture
@@ -101,10 +101,80 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
   const toolsData = [
     {
+      id: 'universal-converter' as TabId,
+      label: isAr ? "المحول الشامل لكافة التنسيقات" : "Universal Format Converter",
+      descAr: "تحويل جميع الملفات والتنسيقات من وإلى أي نوع متاح محلياً بسلاسة.",
+      descEn: "Convert literally all extensions from any file format to your target format effortlessly.",
+      icon: RefreshCw,
+      color: "from-blue-600 to-indigo-700",
+      bgLight: "bg-blue-50 border-blue-100 text-blue-700",
+      category: "utilities" as const
+    },
+    {
+      id: 'file-encryptor' as TabId,
+      label: t.sidebar.fileEncryptor,
+      descAr: "تشفير عسكري للملفات الخاصة بكلمات مرور محمية غير قابلة للاختراق.",
+      descEn: "Military-grade file encryption using AES block ciphers with secure password barriers.",
+      icon: Lock,
+      color: "from-stone-600 to-slate-800",
+      bgLight: "bg-slate-50 border-slate-200 text-slate-800",
+      category: "security" as const
+    },
+    {
+      id: 'file-decryptor' as TabId,
+      label: t.sidebar.fileDecryptor,
+      descAr: "فك تشفير الملفات المقفلة واستعادة البيانات بأمان وفعالية.",
+      descEn: "Decrypt securely locked local files instantly to restore original data.",
+      icon: Unlock,
+      color: "from-stone-500 to-slate-700",
+      bgLight: "bg-slate-50 border-slate-200 text-slate-700",
+      category: "security" as const
+    },
+    {
+      id: 'metadata-scrubber' as TabId,
+      label: t.sidebar.metadataScrubber,
+      descAr: "حذف وطمس بصمات وتعقب الميتا داتا وصور المصورين وبيانات أجهزة الجوال من الصور.",
+      descEn: "Wipe sensitive EXIF headers, GPS fingerprints, and hardware metadata efficiently.",
+      icon: ShieldCheck,
+      color: "from-blue-600 to-slate-700",
+      bgLight: "bg-blue-50 border-blue-100 text-blue-700",
+      category: "security" as const
+    },
+    {
+      id: 'file-shredder' as TabId,
+      label: t.sidebar.fileShredder,
+      descAr: "تدمير وتمزيق ومسح الملفات الحساسة بحيث لا يمكن استعادتها بواسطة أية برامج نهائياً.",
+      descEn: "Secure wipe and permanent multi-layer shredding of highly sensitive materials.",
+      icon: Trash2,
+      color: "from-red-600 to-rose-700",
+      bgLight: "bg-red-50 border-red-100 text-red-700",
+      category: "security" as const
+    },
+    {
+      id: 'steganography-tool' as TabId,
+      label: t.sidebar.steganographyTool,
+      descAr: "إخفاء النصوص والمستندات السرية داخل صور عادية غير ملفتة وتشفيرها.",
+      descEn: "Hide confidential messages invisibly deep inside normal image carrier pixels.",
+      icon: Eye,
+      color: "from-violet-600 to-purple-800",
+      bgLight: "bg-violet-50 border-violet-100 text-violet-700",
+      category: "security" as const
+    },
+    {
+      id: 'share-menu' as TabId,
+      label: t.sidebar.shareMenu,
+      descAr: "مشاركة وتوليد روابط سريعة ولون مباشر ونقل سريع للملفات من متصفحك.",
+      descEn: "Generate quick shareable links or broadcast items via social API pathways securely.",
+      icon: Share2,
+      color: "from-teal-500 to-emerald-600",
+      bgLight: "bg-teal-50 border-teal-100 text-teal-700",
+      category: "other" as const
+    },
+    {
       id: 'image-convert' as TabId,
       label: t.sidebar.imageConvert,
-      descAr: "تحويل امتدادات الصور المختلفة مثل PNG, JPG, WebP، مع حفظ الجودة.",
-      descEn: "Convert image extensions (PNG, JPG, WebP) instantly while preserving fine quality.",
+      descAr: "تحويل جميع امتدادات وملفات الصور المتاحة (أي نوع لأي نوع) بحرية.",
+      descEn: "Convert all image formats from any to any entirely instantly.",
       icon: RefreshCw,
       color: "from-blue-500 to-sky-500",
       bgLight: "bg-blue-50/70 border-blue-100/60 text-blue-600",
@@ -167,7 +237,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
       descEn: "Erase photo backgrounds on-screen using advanced client-side intelligence.",
       icon: Wand2,
       color: "from-violet-500 to-fuchsia-500",
-      bgLight: "bg-violet-50/70 border-violet-100/60 text-violet-650",
+      bgLight: "bg-violet-50/70 border-violet-100/60 text-violet-600",
       category: "image" as const
     },
     {
@@ -187,7 +257,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
       descEn: "Ultimate bulk builder: Resize, convert & compress up to 50 assets merged in a ZIP.",
       icon: Images,
       color: "from-lime-500 to-emerald-500",
-      bgLight: "bg-lime-50/70 border-lime-100/60 text-lime-650",
+      bgLight: "bg-lime-50/70 border-lime-100/60 text-lime-600",
       category: "image" as const
     },
     {
@@ -636,7 +706,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             <h3 className="text-2xl font-extrabold font-mono text-purple-900 dark:text-purple-300">
               {stats.filesProcessed} +
             </h3>
-            <p className="text-[10px] text-gray-450">{t.stats.processedCountSub}</p>
+            <p className="text-[10px] text-gray-400">{t.stats.processedCountSub}</p>
           </div>
           <div className="bg-purple-50 dark:bg-slate-700/50 p-3.5 rounded-2xl text-purple-600 dark:text-purple-400">
             <Zap className="w-6 h-6" />
@@ -649,7 +719,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             <h3 className="text-2xl font-extrabold font-mono text-emerald-600 dark:text-emerald-400">
               {stats.spaceSaved}
             </h3>
-            <p className="text-[10px] text-gray-450">{t.stats.totalSavingsSub}</p>
+            <p className="text-[10px] text-gray-400">{t.stats.totalSavingsSub}</p>
           </div>
           <div className="bg-emerald-50 dark:bg-slate-700/50 p-3.5 rounded-2xl text-emerald-600 dark:text-emerald-400">
             <HardDrive className="w-6 h-6" />
@@ -660,9 +730,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <div className="space-y-1">
             <p className="text-xs text-gray-400 font-bold">{t.stats.privacyPercent}</p>
             <h3 className="text-2xl font-extrabold font-mono text-indigo-600 dark:text-indigo-400">
-              100% Secure
+              {lang === 'ar' ? 'آمن ١٠٠٪' : '100% Secure'}
             </h3>
-            <p className="text-[10px] text-gray-450">{t.stats.privacyPercentSub}</p>
+            <p className="text-[10px] text-gray-400">{t.stats.privacyPercentSub}</p>
           </div>
           <div className="bg-indigo-50 dark:bg-slate-700/50 p-3.5 rounded-2xl text-indigo-600 dark:text-indigo-400">
             <Cpu className="w-6 h-6" />
@@ -794,7 +864,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                   <div className="flex items-center justify-between border-b border-gray-50 dark:border-slate-700/30 pb-3 mb-3">
                     <div className="flex items-center gap-3">
                       <div className={`p-2.5 rounded-2xl text-white bg-gradient-to-tr ${tool.color} shadow-sm`}>
-                        <Icon className="w-4.5 h-4.5" />
+                        <Icon className="w-[18px] h-[18px]" />
                       </div>
                       <span className="font-extrabold text-sm text-slate-900 dark:text-white">{tool.label}</span>
                     </div>

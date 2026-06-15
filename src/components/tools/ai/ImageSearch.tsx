@@ -236,7 +236,7 @@ export const ImageSearch: React.FC<{ lang: 'ar' | 'en' }> = ({ lang }) => {
           />
           <label
             htmlFor="multi-search-picker"
-            className="flex items-center justify-center gap-2 bg-purple-55 dark:bg-slate-750 text-purple-800 dark:text-purple-300 border border-purple-100 hover:opacity-90 font-bold py-3 px-5 rounded-2xl text-xs cursor-pointer shadow-sm transition-all"
+            className="flex items-center justify-center gap-2 bg-purple-55 dark:bg-slate-700 text-purple-800 dark:text-purple-300 border border-purple-100 hover:opacity-90 font-bold py-3 px-5 rounded-2xl text-xs cursor-pointer shadow-sm transition-all"
           >
             <FileUp className="w-4 h-4" />
             <span>{lang === 'ar' ? 'إضافة مجموعة صور للمعرض' : 'Add Multi-Images to Index'}</span>
@@ -295,7 +295,7 @@ export const ImageSearch: React.FC<{ lang: 'ar' | 'en' }> = ({ lang }) => {
               return (
                 <div 
                   key={item.id} 
-                  className="bg-white dark:bg-slate-850 rounded-2xl overflow-hidden border border-slate-150 dark:border-slate-750 flex flex-col justify-between shadow-sm relative group"
+                  className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-150 dark:border-slate-750 flex flex-col justify-between shadow-sm relative group"
                 >
                   
                   {/* Photo space */}

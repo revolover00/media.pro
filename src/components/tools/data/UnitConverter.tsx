@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useEffect } from 'react';
 import { 
@@ -313,7 +312,7 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ lang, onAddHistory
             return (
               <div 
                 key={cat.id}
-                className={`flex items-center justify-between p-3 rounded-2xl border transition-all cursor-pointer ${isActive ? 'bg-orange-50/40 dark:bg-orange-950/10 border-orange-310 shadow-sm' : 'bg-slate-50/55 hover:bg-slate-100/50 border-slate-100/50 dark:bg-slate-850 dark:border-slate-800/70'}`}
+                className={`flex items-center justify-between p-3 rounded-2xl border transition-all cursor-pointer ${isActive ? 'bg-orange-50/40 dark:bg-orange-950/10 border-orange-310 shadow-sm' : 'bg-slate-50/55 hover:bg-slate-100/50 border-slate-100/50 dark:bg-slate-800 dark:border-slate-800/70'}`}
                 onClick={() => setActiveCatId(cat.id)}
               >
                 <div className="flex items-center gap-2.5">

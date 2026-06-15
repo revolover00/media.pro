@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useRef } from 'react';
 import { 
@@ -179,7 +178,8 @@ export const ChartGenerator: React.FC<ChartGeneratorProps> = ({ lang, onAddHisto
       a.download = filename;
       document.body.appendChild(a);
       a.click();
-      document.body.removeChild(a);
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 
       showLocalToast(isAr ? 'تم تصدير وحفظ الرسم البياني بنجاح!' : 'Chart exported successfully!');
 
@@ -262,7 +262,8 @@ export const ChartGenerator: React.FC<ChartGeneratorProps> = ({ lang, onAddHisto
       a.download = filename;
       document.body.appendChild(a);
       a.click();
-      document.body.removeChild(a);
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 
       if (onAddHistoryItem) {
         onAddHistoryItem({

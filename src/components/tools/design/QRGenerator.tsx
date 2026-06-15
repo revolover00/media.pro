@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useRef } from 'react';
 import { 
@@ -110,6 +109,7 @@ export const QRGenerator: React.FC<QRGeneratorProps> = ({ lang, onAddHistoryItem
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 
     showLocalToast(isAr ? 'تم تصدير وحفظ رمز الـ QR كصورة!' : 'Branded QR Code exported successfully!');
 

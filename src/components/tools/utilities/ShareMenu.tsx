@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useState, useRef } from 'react';
 import { 
   Share2, 
@@ -41,15 +39,13 @@ export const ShareMenu: React.FC<ShareMenuProps> = ({ lang }) => {
 
   const handleGenerateShareLink = () => {
     if (!shareFile) return;
-
     setIsGenerating(true);
-    // Simulate cloud block creation on-the-fly local unique identifier
     setTimeout(() => {
-      const uniqueId = Math.random().toString(36).substring(2, 10);
-      const generatedLink = `https://fileforge.pro/share/${uniqueId}_${encodeURIComponent(shareFile.name)}`;
-      setTemporaryUrl(generatedLink);
+      // Create a real blob URL for local sharing/download
+      const localUrl = URL.createObjectURL(shareFile);
+      setTemporaryUrl(localUrl);
       setIsGenerating(false);
-    }, 1200);
+    }, 400);
   };
 
   const handleCopyLink = () => {
@@ -76,6 +72,9 @@ export const ShareMenu: React.FC<ShareMenuProps> = ({ lang }) => {
 
   const clearShareItem = () => {
     setShareFile(null);
+    if (temporaryUrl) {
+      URL.revokeObjectURL(temporaryUrl);
+    }
     setTemporaryUrl('');
     setCopied(false);
   };
@@ -83,34 +82,33 @@ export const ShareMenu: React.FC<ShareMenuProps> = ({ lang }) => {
   // Telegram intent url
   const getTelegramShareUrl = () => {
     const textMsg = isAr 
-      ? `أشارك معك ملف آمن من ملفات FileForge Pro: ${shareFile?.name || ''}` 
-      : `Sharing a file securely processed with FileForge Pro: ${shareFile?.name || ''}`;
-    const fallbackLink = temporaryUrl || 'https://fileforge.pro';
-    return `https://t.me/share/url?url=${encodeURIComponent(fallbackLink)}&text=${encodeURIComponent(textMsg)}`;
+      ? `أشارك معك اسم ملف معالج محلياً: ${shareFile?.name || ''}` 
+      : `Sharing a locally processed file: ${shareFile?.name || ''}`;
+    return `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(textMsg)}`;
   };
 
   // WhatsApp intent url
   const getWhatsAppShareUrl = () => {
     const textMsg = isAr 
-      ? `أشارك معك ملف آمن من ملفات FileForge Pro: ${shareFile?.name || ''} - الرابط: ${temporaryUrl || 'https://fileforge.pro'}` 
-      : `Sharing a file securely processed with FileForge Pro: ${shareFile?.name || ''} - Link: ${temporaryUrl || 'https://fileforge.pro'}`;
-    return `https://api.whatsapp.com/send?text=${encodeURIComponent(textMsg)}`;
+      ? `أشارك معك اسم ملف معالج محلياً: ${shareFile?.name || ''}` 
+      : `Sharing a locally processed file: ${shareFile?.name || ''}`;
+    return `https://api.whatsapp.com/send?text=${encodeURIComponent(textMsg + '\n\n' + window.location.href)}`;
   };
 
   return (
-    <div id="share-menu" className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800/80 p-5 sm:p-6 shadow-sm space-y-6 text-slate-705 dark:text-slate-205">
+    <div id="share-menu" className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800/80 p-5 sm:p-6 shadow-sm space-y-6 text-slate-705 dark:text-slate-200">
       
       {/* Header design */}
       <div className="flex items-center gap-3 border-b border-slate-50 dark:border-slate-800 pb-4">
-        <div className="bg-purple-600/10 p-3 rounded-2xl text-purple-650 animate-pulse">
+        <div className="bg-purple-600/10 p-3 rounded-2xl text-purple-600">
           <Share2 className="w-6 h-6" />
         </div>
         <div>
           <h2 className="text-lg font-bold text-slate-900 dark:text-white">
-            {isAr ? 'بوابة مشاركة الملفات والأكواد الآمنة' : 'Secure File Sharing Hub'}
+            {isAr ? 'بوابة تشغيل الروابط وتنزيل الملفات المحلية' : 'Local File Download & Link Gateway'}
           </h2>
           <p className="text-xs text-slate-400">
-            {isAr ? 'أنشئ روابط آمنة مؤقتة لمشاركة أعمالك، أو ارسلها فورياً عبر قنوات تليجرام وواتساب المشفرة' : 'Publish temporary secure links, copy file binary structures directly into device clipboard, or route via messaging apps.'}
+            {isAr ? 'أنشئ روابط تنزيل محلية لملفاتك الحالية، أو انسخ هياكلها الثنائية في الحافظة لتبادل فوري آمن' : 'Generate temporary local session-only download links, or copy binary structures to clipboard for secure on-device access.'}
           </p>
         </div>
       </div>
@@ -120,11 +118,11 @@ export const ShareMenu: React.FC<ShareMenuProps> = ({ lang }) => {
           onClick={() => fileInputRef.current?.click()}
           onDragOver={(e) => e.preventDefault()}
           onDrop={(e) => { e.preventDefault(); handleFileSelected(e as any); }}
-          className="border-2 border-dashed border-slate-200 dark:border-slate-800 hover:border-purple-500 bg-slate-50/50 dark:bg-slate-950/20 rounded-2xl p-8 text-center cursor-pointer min-h-[160px] flex flex-col items-center justify-center transition"
+          className="border-2 border-dashed border-slate-200 dark:border-slate-850 hover:border-purple-500 bg-slate-50/50 dark:bg-slate-950/20 rounded-2xl p-8 text-center cursor-pointer min-h-[160px] flex flex-col items-center justify-center transition"
         >
-          <Upload className="w-8 h-8 text-slate-400 mb-2 animate-bounce" />
-          <p className="font-bold">{isAr ? 'ارفع الملف الذي ترغب في نقله وتوليد رابط له' : 'Choose target file to publish'}</p>
-          <p className="text-[10px] text-slate-405 mt-1">{isAr ? 'سيتم تشييد روابط تشاركية صامدة وآمنة' : 'Prepares live file pointers inside secure scopes'}</p>
+          <Upload className="w-8 h-8 text-slate-400 mb-2" />
+          <p className="font-bold">{isAr ? 'اختر أو اسحب الملف لتوليد رابط تنزيل محلي له' : 'Choose or drop target file to load'}</p>
+          <p className="text-[10px] text-slate-400 mt-1">{isAr ? 'سيتم تحضير الملف في ذاكرة الجلسة الحالية' : 'Prepares live file pointers in session memory'}</p>
           <input 
             type="file"
             ref={fileInputRef}
@@ -135,10 +133,10 @@ export const ShareMenu: React.FC<ShareMenuProps> = ({ lang }) => {
       ) : (
         <div className="space-y-5 text-xs text-right">
           
-          <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-100 dark:border-slate-850 flex justify-between items-center">
+          <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-100 dark:border-slate-850 flex justify-between items-center text-slate-705 dark:text-slate-200">
             <div className="flex items-center gap-2.5 truncate">
               <FileCheck className="w-5 h-5 text-purple-600 shrink-0" />
-              <div className="truncate">
+              <div className="truncate text-left md:text-right">
                 <p className="font-bold truncate text-slate-800 dark:text-white">{shareFile.name}</p>
                 <p className="text-[10px] text-slate-400">{(shareFile.size / 1024).toFixed(1)} KB</p>
               </div>
@@ -156,15 +154,15 @@ export const ShareMenu: React.FC<ShareMenuProps> = ({ lang }) => {
             
             {/* Generate transient link */}
             <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-100 dark:border-slate-850 space-y-3">
-              <span className="font-bold text-slate-500 block">{isAr ? '🔗 توليد رابط مؤقت آمن:' : '🔗 Temporary Share Link:'}</span>
+              <span className="font-bold text-slate-500 block">{isAr ? '🔗 رابط تنزيل مؤقت (محلي فقط):' : '🔗 Temporary Download Link (Local only):'}</span>
               
               {!temporaryUrl ? (
                 <button
                   onClick={handleGenerateShareLink}
                   disabled={isGenerating}
-                  className="w-full py-2 bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-650 hover:to-indigo-650 text-white font-bold rounded-xl cursor-pointer border-0 shadow text-xs"
+                  className="w-full py-2 bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white font-bold rounded-xl cursor-pointer border-0 shadow text-xs"
                 >
-                  {isGenerating ? (isAr ? 'جاري تشكيل الرابط...' : 'Sealing secure link...') : (isAr ? 'احصل على رابط مؤقت (ساعتين)' : 'Generate 2-Hour Link')}
+                  {isGenerating ? (isAr ? 'جاري تشكيل الرابط...' : 'Preparing links...') : (isAr ? 'توليد رابط تنزيل فوري للجلسة' : 'Generate Local Download Link')}
                 </button>
               ) : (
                 <div className="space-y-2">
@@ -184,7 +182,7 @@ export const ShareMenu: React.FC<ShareMenuProps> = ({ lang }) => {
                   </div>
 
                   <div className="flex items-center gap-1.5 text-[10px] text-amber-600 font-bold justify-end">
-                    <span>{isAr ? 'رابط نشط مؤقت ينتهي تلقائياً بعد ساعتين' : 'Link active for exactly 2 hours.'}</span>
+                    <span>{isAr ? 'رابط محلي ينتهي فوراً بمجرد إغلاق علامة تبويب المتصفح' : 'Local link expires when browser tab closes'}</span>
                     <Clock className="w-3.5 h-3.5" />
                   </div>
                 </div>
@@ -193,7 +191,7 @@ export const ShareMenu: React.FC<ShareMenuProps> = ({ lang }) => {
 
             {/* Direct share utilities */}
             <div className="bg-slate-50 dark:bg-slate-950/40 p-4 rounded-2xl border border-slate-100 dark:border-slate-850 space-y-3 text-xs">
-              <span className="font-bold text-slate-500 block">{isAr ? '📲 إرسال ومشاركة مباشرة:' : '📲 Instant Forwarding Channels:'}</span>
+              <span className="font-bold text-slate-500 block">{isAr ? '📲 مشاركة ونقل اسم الملف:' : '📲 Share & copy filename:'}</span>
               
               <div className="grid grid-cols-2 gap-2 text-[10px] font-bold">
                 
@@ -201,7 +199,7 @@ export const ShareMenu: React.FC<ShareMenuProps> = ({ lang }) => {
                   href={getTelegramShareUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 bg-sky-50 dark:bg-sky-950/20 text-sky-650 hover:bg-sky-100 flex items-center justify-center gap-1.5 rounded-xl border-0 cursor-pointer no-underline text-center"
+                  className="p-2.5 bg-sky-50 dark:bg-sky-950/20 text-sky-600 hover:bg-sky-100 flex items-center justify-center gap-1.5 rounded-xl border-0 cursor-pointer no-underline text-center"
                 >
                   <Send className="w-4 h-4" />
                   <span>{isAr ? 'تليجرام' : 'Telegram'}</span>

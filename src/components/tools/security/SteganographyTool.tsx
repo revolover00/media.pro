@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useRef } from 'react';
 import { 
@@ -262,6 +261,7 @@ export const SteganographyTool: React.FC<SteganographyToolProps> = ({ lang, onAd
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   };
 
   const clearEmbedSelection = () => {
@@ -283,7 +283,7 @@ export const SteganographyTool: React.FC<SteganographyToolProps> = ({ lang, onAd
       
       {/* Toast notifications */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 bg-slate-900 dark:bg-slate-850 text-white py-2 px-4 rounded-xl shadow-lg border border-slate-700 text-xs font-bold animate-slideUp z-50 flex items-center gap-1.5">
+        <div className="fixed bottom-6 right-6 bg-slate-900 dark:bg-slate-800 text-white py-2 px-4 rounded-xl shadow-lg border border-slate-700 text-xs font-bold animate-slideUp z-50 flex items-center gap-1.5">
           <CheckCircle className="w-4 h-4 text-emerald-400" />
           <span>{toastMessage}</span>
         </div>
@@ -310,14 +310,14 @@ export const SteganographyTool: React.FC<SteganographyToolProps> = ({ lang, onAd
       <div className="grid grid-cols-2 gap-1.5 bg-slate-50 dark:bg-slate-950 p-1 rounded-xl border border-slate-100 dark:border-slate-850 max-w-xs text-xs font-bold">
         <button
           onClick={() => setActiveTab('embed')}
-          className={`py-1.5 rounded-lg cursor-pointer transition border-0 ${activeTab === 'embed' ? 'bg-slate-900 text-white dark:bg-slate-850 font-bold' : 'text-slate-400'}`}
+          className={`py-1.5 rounded-lg cursor-pointer transition border-0 ${activeTab === 'embed' ? 'bg-slate-900 text-white dark:bg-slate-800 font-bold' : 'text-slate-400'}`}
         >
           {isAr ? '📥 إخفاء السر' : 'Embed Secret'}
         </button>
 
         <button
           onClick={() => setActiveTab('extract')}
-          className={`py-1.5 rounded-lg cursor-pointer transition border-0 ${activeTab === 'extract' ? 'bg-slate-900 text-white dark:bg-slate-850 font-bold' : 'text-slate-400'}`}
+          className={`py-1.5 rounded-lg cursor-pointer transition border-0 ${activeTab === 'extract' ? 'bg-slate-900 text-white dark:bg-slate-800 font-bold' : 'text-slate-400'}`}
         >
           {isAr ? '📤 تشريح واستخراج' : 'Extract Secret'}
         </button>

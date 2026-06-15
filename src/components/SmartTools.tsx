@@ -72,7 +72,12 @@ interface PipelineStatus {
 // This keeps performance optimal
 const pipelineCache: Record<string, any> = {};
 
-export const SmartTools: React.FC = () => {
+interface SmartToolsProps {
+  lang: 'ar' | 'en';
+}
+
+export const SmartTools: React.FC<SmartToolsProps> = ({ lang }) => {
+  const isAr = lang === 'ar';
   const [activeSubTab, setActiveSubTab] = useState<'caption' | 'summary' | 'translate' | 'keywords' | 'rag'>('caption');
   
   // Pipeline Load States
@@ -348,7 +353,7 @@ export const SmartTools: React.FC = () => {
   const handleExtractKeywords = () => {
     if (!keywordsText.trim()) return;
     
-    const words = keywordsText.toLowerCase().match(/[\u0600-\u06FF\w']+/g) || [];
+    const words: string[] = keywordsText.toLowerCase().match(/[\u0600-\u06FF\w']+/g) || [];
     const cleanWords = words.filter(word => {
       return word.length > 2 && !ARABIC_STOPWORDS.has(word) && !ENGLISH_STOPWORDS.has(word);
     });
@@ -562,11 +567,11 @@ export const SmartTools: React.FC = () => {
       {/* Sub-tab Navigation */}
       <div className="flex flex-wrap gap-2 bg-slate-50 p-1.5 rounded-2xl border border-gray-100">
         {[
-          { id: 'caption', label: 'تحليل ووصف الصور', icon: ImageIcon },
-          { id: 'summary', label: 'تلخيص النصوص', icon: FileText },
-          { id: 'translate', label: 'الترجمة الفورية', icon: Languages },
-          { id: 'keywords', label: 'استخراج الكلمات المفتاحية', icon: Sparkles },
-          { id: 'rag', label: 'محادثة المستندات (RAG)', icon: BookOpen },
+          { id: 'caption', label: isAr ? 'تحليل ووصف الصور' : 'Image Context Analysis', icon: ImageIcon },
+          { id: 'summary', label: isAr ? 'تلخيص النصوص' : 'Text Summarization', icon: FileText },
+          { id: 'translate', label: isAr ? 'الترجمة الفورية' : 'Instant Translation', icon: Languages },
+          { id: 'keywords', label: isAr ? 'استخراج الكلمات المفتاحية' : 'Extract Keywords', icon: Sparkles },
+          { id: 'rag', label: isAr ? 'محادثة المستندات (RAG)' : 'Document Chat (RAG)', icon: BookOpen },
         ].map((tab) => {
           const Icon = tab.icon;
           const isSelected = activeSubTab === tab.id;
@@ -1125,7 +1130,7 @@ export const SmartTools: React.FC = () => {
           {/* Educational Explainers */}
           <div className="space-y-4">
             <h4 className="font-extrabold text-sm text-purple-950 flex items-center gap-1.5 border-b border-purple-150 pb-2 select-none">
-              <HelpCircle className="w-4.5 h-4.5 text-purple-750" />
+              <HelpCircle className="w-[18px] h-[18px] text-purple-750" />
               <span>كيف تعمل هذه التقنية؟</span>
             </h4>
 

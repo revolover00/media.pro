@@ -40,6 +40,13 @@ export const PDFFormFiller: React.FC<PDFFormFillerProps> = ({ lang, onAddHistory
   const [success, setSuccess] = useState(false);
   const [result, setResult] = useState<{ blob: Blob; url: string; size: number } | null>(null);
 
+  useEffect(() => {
+    return () => {
+      if (result && result.url) URL.revokeObjectURL(result.url);
+    };
+  }, [result]);
+
+
   // Fallback / manual tools spawner for scanned files
   const [customFields, setCustomFields] = useState<FormFieldItem[]>([]);
 
@@ -493,7 +500,7 @@ export const PDFFormFiller: React.FC<PDFFormFillerProps> = ({ lang, onAddHistory
                               type="checkbox"
                               checked={cf.value === 'true'}
                               onChange={(e) => handleValueChange(cIdx, e.target.checked ? 'true' : 'false', true)}
-                              className="rounded text-indigo-700 focus:ring-indigo-500 w-4.5 h-4.5"
+                              className="rounded text-indigo-700 focus:ring-indigo-500 w-[18px] h-[18px]"
                             />
                           ) : cf.type === 'date' ? (
                             <input
@@ -588,7 +595,7 @@ export const PDFFormFiller: React.FC<PDFFormFillerProps> = ({ lang, onAddHistory
                       </div>
                     ) : (
                       <>
-                        <Check className="w-4.5 h-4.5 text-purple-100" />
+                        <Check className="w-[18px] h-[18px] text-purple-100" />
                         <span>{t.fillBtn}</span>
                       </>
                     )}

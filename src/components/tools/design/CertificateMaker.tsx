@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useRef } from 'react';
 import { 
@@ -133,7 +132,8 @@ export const CertificateMaker: React.FC<CertificateMakerProps> = ({ lang, onAddH
       a.download = filename;
       document.body.appendChild(a);
       a.click();
-      document.body.removeChild(a);
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 
       showLocalToast(isAr ? 'تم حفظ وتنزيل شهادتك الموثقة!' : 'Certified certificate saved on-device!');
 

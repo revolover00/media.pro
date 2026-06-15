@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
 import { 
@@ -243,6 +242,7 @@ export const VideoCompressor: React.FC<VideoCompressorProps> = ({ lang, onAddHis
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   };
 
   const spaceSaving = videoFile && compressedSize > 0 

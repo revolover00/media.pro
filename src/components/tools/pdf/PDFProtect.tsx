@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Lock, 
   ShieldCheck, 
@@ -28,6 +28,13 @@ export const PDFProtect: React.FC<PDFProtectProps> = ({ lang, onAddHistoryItem }
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [result, setResult] = useState<{ blob: Blob; url: string; size: number } | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (result && result.url) URL.revokeObjectURL(result.url);
+    };
+  }, [result]);
+
   
   // Custom permissions
   const [permissions, setPermissions] = useState({
@@ -490,7 +497,7 @@ export const PDFProtect: React.FC<PDFProtectProps> = ({ lang, onAddHistoryItem }
 
                   {errorMsg && (
                     <div className="flex items-center gap-2 bg-red-50 text-red-650 p-3.5 rounded-2xl border border-red-100 text-xs font-semibold">
-                      <AlertCircle className="w-4.5 h-4.5 shrink-0" />
+                      <AlertCircle className="w-[18px] h-[18px] shrink-0" />
                       <span>{errorMsg}</span>
                     </div>
                   )}
@@ -512,7 +519,7 @@ export const PDFProtect: React.FC<PDFProtectProps> = ({ lang, onAddHistoryItem }
                       onClick={handleDownload}
                       className="flex-1 flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-sm py-3 px-5 rounded-xl cursor-pointer shadow"
                     >
-                      <Download className="w-4.5 h-4.5" />
+                      <Download className="w-[18px] h-[18px]" />
                       <span>{t.downloadBtn}</span>
                     </button>
                     

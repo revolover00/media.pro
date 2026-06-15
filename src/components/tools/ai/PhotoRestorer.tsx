@@ -431,7 +431,7 @@ export const PhotoRestorer: React.FC<PhotoRestorerProps> = ({ lang, onAddHistory
                 onClick={() => setScratchRemoval(!scratchRemoval)}
                 className={`w-12 h-6.5 rounded-full p-1 transition-colors relative cursor-pointer ${scratchRemoval ? 'bg-amber-500' : 'bg-slate-300 dark:bg-slate-700'}`}
               >
-                <div className={`w-4.5 h-4.5 bg-white rounded-full transition-transform absolute top-1 ${scratchRemoval ? (lang === 'ar' ? 'left-1' : 'right-1') : (lang === 'ar' ? 'right-1' : 'left-1')}`} />
+                <div className={`w-[18px] h-[18px] bg-white rounded-full transition-transform absolute top-1 ${scratchRemoval ? (lang === 'ar' ? 'left-1' : 'right-1') : (lang === 'ar' ? 'right-1' : 'left-1')}`} />
               </button>
             </div>
 
@@ -447,7 +447,7 @@ export const PhotoRestorer: React.FC<PhotoRestorerProps> = ({ lang, onAddHistory
                 max="100"
                 value={denoiseLevel}
                 onChange={(e) => setDenoiseLevel(Number(e.target.value))}
-                className="w-full h-1.5 bg-slate-200 dark:bg-slate-750 accent-amber-500 rounded-lg cursor-pointer"
+                className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 accent-amber-500 rounded-lg cursor-pointer"
               />
             </div>
 

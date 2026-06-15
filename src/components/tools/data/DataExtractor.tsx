@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState } from 'react';
 import { 
@@ -120,6 +119,7 @@ export const DataExtractor: React.FC<DataExtractorProps> = ({ lang, onAddHistory
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   };
 
   const exportAllAsJSON = () => {
@@ -132,6 +132,7 @@ export const DataExtractor: React.FC<DataExtractorProps> = ({ lang, onAddHistory
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 
     showLocalToast(isAr ? 'تم تصدير ملف البيانات الإجمالي الحاضر!' : 'All parsed modules exported as JSON!');
 

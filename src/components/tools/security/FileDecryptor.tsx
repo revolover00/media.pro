@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useRef } from 'react';
 import { 
@@ -167,6 +166,7 @@ export const FileDecryptor: React.FC<FileDecryptorProps> = ({ lang, onAddHistory
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   };
 
   const getMimeIcon = (mime: string) => {

@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useEffect } from 'react';
 import { 
@@ -227,7 +226,8 @@ export const MediaInfo: React.FC<MediaInfoProps> = ({ lang, onAddHistoryItem }) 
       a.download = `media_report_${Date.now()}.pdf`;
       document.body.appendChild(a);
       a.click();
-      document.body.removeChild(a);
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
       URL.revokeObjectURL(blobUrl);
 
       // Save list log history

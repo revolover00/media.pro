@@ -77,6 +77,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   const menuItems = [
     {
+      id: 'universal-converter' as TabId,
+      label: t.sidebar.universalConverter || "المحول الشامل لكافة التنسيقات",
+      icon: RefreshCw,
+      category: 'utilities'
+    },
+    {
       id: 'dashboard' as TabId,
       label: t.sidebar.dashboard,
       icon: LayoutDashboard,
@@ -616,17 +622,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         className={`
                           w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-extrabold transition-all duration-150 group cursor-pointer
                           ${isActive 
-                            ? 'bg-gradient-to-l from-purple-600 to-indigo-600 text-white shadow-md border-r-4 border-purple-400' 
-                            : 'text-purple-250 hover:bg-white/5 hover:text-white'
+                            ? 'bg-gradient-to-r from-purple-600/90 to-indigo-600/90 text-white shadow-md font-black' 
+                            : 'text-purple-300 hover:bg-white/5 hover:text-white'
                           }
                         `}
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
-                          <Icon className={`w-4 h-4 shrink-0 transition-transform ${isActive ? 'text-purple-205' : 'text-purple-400'}`} />
+                          <Icon className={`w-4 h-4 shrink-0 transition-transform ${isActive ? 'text-purple-200' : 'text-purple-400'}`} />
                           <span className="truncate">{item.label}</span>
                         </div>
                         {isPinned && item.id !== 'dashboard' && item.id !== 'history' && (
-                          <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-405 shrink-0" />
+                          <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400 shrink-0" />
                         )}
                       </button>
                     );

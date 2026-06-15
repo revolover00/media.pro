@@ -75,6 +75,7 @@ export type TabId =
   | 'file-shredder'
   | 'steganography-tool'
   | 'share-menu'
+  | 'universal-converter'
   | 'onboarding'
   | 'keyboard-shortcuts';
 

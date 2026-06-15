@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useEffect } from 'react';
 import { 
@@ -273,7 +272,7 @@ export const BatchRenamer: React.FC<BatchRenamerProps> = ({ lang, onAddHistoryIt
                   <button
                     key={p.id}
                     onClick={() => setNamingPattern(p.id as any)}
-                    className={`py-2 px-3 rounded-xl border text-center transition cursor-pointer text-[10px] ${namingPattern === p.id ? 'bg-slate-900 text-white dark:bg-slate-850 border-slate-900' : 'bg-white dark:bg-slate-900 border-slate-105 text-slate-500'}`}
+                    className={`py-2 px-3 rounded-xl border text-center transition cursor-pointer text-[10px] ${namingPattern === p.id ? 'bg-slate-900 text-white dark:bg-slate-800 border-slate-900' : 'bg-white dark:bg-slate-900 border-slate-105 text-slate-500'}`}
                   >
                     {p.label}
                   </button>

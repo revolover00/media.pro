@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import { 
@@ -263,6 +262,7 @@ export const GIFEditor: React.FC<GIFEditorProps> = ({ lang, onAddHistoryItem }) 
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   };
 
   return (

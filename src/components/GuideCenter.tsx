@@ -348,7 +348,7 @@ export const GuideCenter: React.FC<GuideCenterProps> = ({ lang, setActiveTab }) 
                     </div>
                     <h4 className="font-extrabold text-sm text-slate-900 dark:text-white">{exp.title}</h4>
                   </div>
-                  <p className="text-xs text-gray-450 dark:text-slate-300 leading-relaxed">
+                  <p className="text-xs text-gray-400 dark:text-slate-300 leading-relaxed">
                     {exp.desc}
                   </p>
                 </div>

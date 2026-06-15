@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useRef } from 'react';
 import { 
@@ -291,7 +290,7 @@ export const FileShredder: React.FC<FileShredderProps> = ({ lang, onAddHistoryIt
                   <button
                     onClick={() => setPasses(3)}
                     disabled={isShredding}
-                    className={`p-2.5 rounded-xl border font-bold cursor-pointer transition ${passes === 3 ? 'bg-slate-950 text-white dark:bg-slate-850 border-slate-950 font-bold' : 'bg-white dark:bg-slate-900 border-slate-100 text-slate-500'}`}
+                    className={`p-2.5 rounded-xl border font-bold cursor-pointer transition ${passes === 3 ? 'bg-slate-950 text-white dark:bg-slate-800 border-slate-950 font-bold' : 'bg-white dark:bg-slate-900 border-slate-100 text-slate-500'}`}
                   >
                     <span>3 {isAr ? 'دورات (DoD سريع)' : 'Passes (Fast DoD)'}</span>
                   </button>
@@ -299,7 +298,7 @@ export const FileShredder: React.FC<FileShredderProps> = ({ lang, onAddHistoryIt
                   <button
                     onClick={() => setPasses(5)}
                     disabled={isShredding}
-                    className={`p-2.5 rounded-xl border font-bold cursor-pointer transition ${passes === 5 ? 'bg-slate-950 text-white dark:bg-slate-850 border-slate-950 font-bold' : 'bg-white dark:bg-slate-900 border-slate-101 text-slate-500'}`}
+                    className={`p-2.5 rounded-xl border font-bold cursor-pointer transition ${passes === 5 ? 'bg-slate-950 text-white dark:bg-slate-800 border-slate-950 font-bold' : 'bg-white dark:bg-slate-900 border-slate-101 text-slate-500'}`}
                   >
                     <span>5 {isAr ? 'دورات (DoD متوسط)' : 'Passes (Gutmann Lite)'}</span>
                   </button>
@@ -307,7 +306,7 @@ export const FileShredder: React.FC<FileShredderProps> = ({ lang, onAddHistoryIt
                   <button
                     onClick={() => setPasses(7)}
                     disabled={isShredding}
-                    className={`p-2.5 rounded-xl border font-bold cursor-pointer transition ${passes === 7 ? 'bg-slate-950 text-white dark:bg-slate-850 border-slate-950 font-bold' : 'bg-white dark:bg-slate-900 border-slate-101 text-slate-500'}`}
+                    className={`p-2.5 rounded-xl border font-bold cursor-pointer transition ${passes === 7 ? 'bg-slate-950 text-white dark:bg-slate-800 border-slate-950 font-bold' : 'bg-white dark:bg-slate-900 border-slate-101 text-slate-500'}`}
                   >
                     <span>7 {isAr ? 'دورات (أمان عالي)' : 'Passes (Strict Military)'}</span>
                   </button>

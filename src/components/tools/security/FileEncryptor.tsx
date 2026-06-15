@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useRef } from 'react';
 import { 
@@ -205,6 +204,7 @@ export const FileEncryptor: React.FC<FileEncryptorProps> = ({ lang, onAddHistory
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
     URL.revokeObjectURL(url);
   };
 

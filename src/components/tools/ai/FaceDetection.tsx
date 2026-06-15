@@ -411,7 +411,7 @@ export const FaceDetection: React.FC<FaceDetectionProps> = ({ lang, onAddHistory
                 max="85"
                 value={minConfidence}
                 onChange={(e) => setMinConfidence(Number(e.target.value))}
-                className="w-full h-1.5 bg-slate-200 dark:bg-slate-750 accent-rose-500 rounded-lg cursor-pointer"
+                className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 accent-rose-500 rounded-lg cursor-pointer"
               />
             </div>
 
@@ -425,7 +425,7 @@ export const FaceDetection: React.FC<FaceDetectionProps> = ({ lang, onAddHistory
                 onClick={() => setBlurFaces(!blurFaces)}
                 className={`w-12 h-6.5 rounded-full p-1 transition-colors relative cursor-pointer ${blurFaces ? 'bg-rose-500' : 'bg-slate-300 dark:bg-slate-700'}`}
               >
-                <div className={`w-4.5 h-4.5 bg-white rounded-full transition-transform absolute top-1 ${blurFaces ? (lang === 'ar' ? 'left-1' : 'right-1') : (lang === 'ar' ? 'right-1' : 'left-1')}`} />
+                <div className={`w-[18px] h-[18px] bg-white rounded-full transition-transform absolute top-1 ${blurFaces ? (lang === 'ar' ? 'left-1' : 'right-1') : (lang === 'ar' ? 'right-1' : 'left-1')}`} />
               </button>
             </div>
           </div>

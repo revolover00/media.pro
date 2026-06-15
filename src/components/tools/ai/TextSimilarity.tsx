@@ -241,13 +241,13 @@ export const TextSimilarity: React.FC<{ lang: 'ar' | 'en' }> = ({ lang }) => {
       <div className="flex bg-slate-50 dark:bg-slate-900/30 p-1 rounded-xl w-fit">
         <button
           onClick={() => setMode('pairwise')}
-          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${mode === 'pairwise' ? 'bg-white dark:bg-slate-850 shadow text-purple-700' : 'text-slate-500 hover:text-slate-700'}`}
+          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${mode === 'pairwise' ? 'bg-white dark:bg-slate-800 shadow text-purple-700' : 'text-slate-500 hover:text-slate-700'}`}
         >
           {lang === 'ar' ? 'مقارنة تشابه نصين' : 'Compare Two Texts'}
         </button>
         <button
           onClick={() => setMode('bulk')}
-          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${mode === 'bulk' ? 'bg-white dark:bg-slate-850 shadow text-purple-700' : 'text-slate-500 hover:text-slate-700'}`}
+          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${mode === 'bulk' ? 'bg-white dark:bg-slate-800 shadow text-purple-700' : 'text-slate-500 hover:text-slate-700'}`}
         >
           {lang === 'ar' ? 'فحص الانتحال والاقتباسات' : 'Plagiarism Plural Scan'}
         </button>

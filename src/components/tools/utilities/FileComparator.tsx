@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState } from 'react';
 import { 
@@ -184,7 +183,7 @@ export const FileComparator: React.FC<FileComparatorProps> = ({ lang }) => {
           <button
             key={t.id}
             onClick={() => setCompareType(t.id as any)}
-            className={`py-1.5 rounded-lg cursor-pointer transition border-0 flex items-center justify-center gap-1.5 ${compareType === t.id ? 'bg-slate-900 text-white dark:bg-slate-850 font-bold' : 'text-slate-400 hover:text-slate-600'}`}
+            className={`py-1.5 rounded-lg cursor-pointer transition border-0 flex items-center justify-center gap-1.5 ${compareType === t.id ? 'bg-slate-900 text-white dark:bg-slate-800 font-bold' : 'text-slate-400 hover:text-slate-600'}`}
           >
             <t.icon className="w-4 h-4" />
             <span>{t.label}</span>

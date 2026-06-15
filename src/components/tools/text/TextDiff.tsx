@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
 import { 
@@ -223,6 +222,7 @@ export const TextDiff: React.FC<TextDiffProps> = ({ lang, onAddHistoryItem }) =>
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
     URL.revokeObjectURL(url);
   };
 

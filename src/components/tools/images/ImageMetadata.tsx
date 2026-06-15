@@ -238,7 +238,7 @@ export const ImageMetadata: React.FC<ImageMetadataProps> = ({ lang }) => {
               </div>
 
               {/* Dimensions and static size indicators */}
-              <div className="space-y-2 bg-slate-50 dark:bg-slate-850 p-3 rounded-xl border dark:border-slate-750">
+              <div className="space-y-2 bg-slate-50 dark:bg-slate-800 p-3 rounded-xl border dark:border-slate-750">
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-gray-400">{isAr ? 'اسم الصورة:' : 'Filename:'}</span>
                   <span className="font-bold text-slate-800 dark:text-gray-200 text-right truncate max-w-[140px]" title={file.name}>

@@ -30,6 +30,13 @@ export const PDFRepair: React.FC<PDFRepairProps> = ({ lang, onAddHistoryItem }) 
   const [logs, setLogs] = useState<string[]>([]);
   const [success, setSuccess] = useState(false);
   const [result, setResult] = useState<{ blob: Blob; url: string; size: number; pagesSalvaged: number } | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (result && result.url) URL.revokeObjectURL(result.url);
+    };
+  }, [result]);
+
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -307,7 +314,7 @@ export const PDFRepair: React.FC<PDFRepairProps> = ({ lang, onAddHistoryItem }) 
               </div>
             ) : (
               <>
-                <Sparkles className="w-4.5 h-4.5 text-purple-250" />
+                <Sparkles className="w-[18px] h-[18px] text-purple-300" />
                 <span>{t.diagnosticsBtn}</span>
               </>
             )}
@@ -341,7 +348,7 @@ export const PDFRepair: React.FC<PDFRepairProps> = ({ lang, onAddHistoryItem }) 
                   <FileText className="w-5 h-5 text-purple-700" />
                   <div>
                     <h4 className="font-bold text-gray-800 text-xs truncate max-w-[200px]">{file.name}</h4>
-                    <p className="text-[10px] text-gray-450 mt-0.5">{t.originalSize} {formatBytes(file.size)}</p>
+                    <p className="text-[10px] text-gray-400 mt-0.5">{t.originalSize} {formatBytes(file.size)}</p>
                   </div>
                 </div>
 
@@ -357,7 +364,7 @@ export const PDFRepair: React.FC<PDFRepairProps> = ({ lang, onAddHistoryItem }) 
                 <div className="space-y-4">
                   <div className="bg-purple-950 text-white p-5 rounded-2xl space-y-3.5 shadow-xl">
                     <div className="flex items-center gap-2 text-emerald-400">
-                      <CheckCircle className="w-4.5 h-4.5" />
+                      <CheckCircle className="w-[18px] h-[18px]" />
                       <span className="font-bold text-xs">{t.successTitle}</span>
                     </div>
 

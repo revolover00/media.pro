@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
 import { 
@@ -250,6 +249,7 @@ export const VideoToGIF: React.FC<VideoToGIFProps> = ({ lang, onAddHistoryItem }
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   };
 
   return (
@@ -279,7 +279,7 @@ export const VideoToGIF: React.FC<VideoToGIFProps> = ({ lang, onAddHistoryItem }
             <div className="border-2 border-dashed border-purple-300 dark:border-slate-600 rounded-2xl p-12 text-center bg-purple-50/20 dark:bg-slate-900/10 hover:bg-purple-50/40 transition-all relative">
               <input
                 type="file"
-                accept="video/mp4,video/webm,video/ogg,video/quicktime"
+                accept="video/*"
                 onChange={handleFileChange}
                 className="absolute inset-0 opacity-0 cursor-pointer"
               />

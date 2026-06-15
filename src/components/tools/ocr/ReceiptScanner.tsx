@@ -549,14 +549,14 @@ export const ReceiptScanner: React.FC<ReceiptScannerProps> = ({ lang, onAddHisto
                     onClick={handleExportCSV}
                     className="flex-1 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition shadow-sm cursor-pointer"
                   >
-                    <FileSpreadsheet className="w-4.5 h-4.5" />
+                    <FileSpreadsheet className="w-[18px] h-[18px]" />
                     <span>{isAr ? 'تصدير جدول (CSV)' : 'Export CSV table'}</span>
                   </button>
                   <button
                     onClick={handleExportJSON}
                     className="flex-1 bg-gradient-to-r from-slate-700 to-gray-800 hover:from-slate-850 hover:to-gray-900 text-white py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition shadow-sm cursor-pointer"
                   >
-                    <FileCode className="w-4.5 h-4.5" />
+                    <FileCode className="w-[18px] h-[18px]" />
                     <span>JSON</span>
                   </button>
                 </div>

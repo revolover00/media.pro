@@ -46,6 +46,13 @@ export const PDFHeaderFooter: React.FC<PDFHeaderFooterProps> = ({ lang, onAddHis
   const [success, setSuccess] = useState(false);
   const [result, setResult] = useState<{ blob: Blob; url: string; size: number } | null>(null);
 
+  useEffect(() => {
+    return () => {
+      if (result && result.url) URL.revokeObjectURL(result.url);
+    };
+  }, [result]);
+
+
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const dict = {
@@ -494,7 +501,7 @@ export const PDFHeaderFooter: React.FC<PDFHeaderFooterProps> = ({ lang, onAddHis
                   <FileText className="w-5 h-5 text-purple-700 font-extrabold" />
                   <div>
                     <h4 className="font-bold text-gray-800 text-xs truncate max-w-[200px]">{file.name}</h4>
-                    <p className="text-[10px] text-gray-450 mt-0.5">
+                    <p className="text-[10px] text-gray-400 mt-0.5">
                       {t.metaPages} {totalPages} | {t.originalSize} {formatBytes(file.size)}
                     </p>
                   </div>
@@ -522,7 +529,7 @@ export const PDFHeaderFooter: React.FC<PDFHeaderFooterProps> = ({ lang, onAddHis
                       </div>
                     ) : (
                       <>
-                        <Sparkles className="w-4.5 h-4.5 text-purple-200" />
+                        <Sparkles className="w-[18px] h-[18px] text-purple-200" />
                         <span>{t.processBtn}</span>
                       </>
                     )}

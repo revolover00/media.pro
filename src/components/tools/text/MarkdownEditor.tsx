@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import { 
@@ -117,7 +116,7 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ lang, onAddHisto
 
   // Load from local storage draft if exists
   useEffect(() => {
-    const saved = localStorage.getItem('forge_markdown_draft');
+    const saved = localStorage.getItem('promedia_markdown_draft');
     if (saved) {
       setMarkdown(saved);
       setSaveStatus(isAr ? 'تم استرداد المسودة التلقائية بنجاح' : 'Recovered automatic local draft draft.');
@@ -128,7 +127,7 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ lang, onAddHisto
   // Save changes automatically
   useEffect(() => {
     const timer = setTimeout(() => {
-      localStorage.setItem('forge_markdown_draft', markdown);
+      localStorage.setItem('promedia_markdown_draft', markdown);
       setSaveStatus(isAr ? 'تم حفظ المسودة محلياً' : 'Draft saved to local storage.');
       setTimeout(() => setSaveStatus(''), 2000);
     }, 1000);
@@ -243,6 +242,7 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ lang, onAddHisto
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
     URL.revokeObjectURL(url);
 
     if (onAddHistoryItem) {
@@ -397,7 +397,7 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ lang, onAddHisto
 
           {/* Box B - Preview HTML rendering panel */}
           {(activeTab === 'preview' || activeTab === 'both') && (
-            <div className="p-6 bg-white dark:bg-slate-850 h-[500px] overflow-y-auto text-left ltr" style={{ direction: 'ltr' }}>
+            <div className="p-6 bg-white dark:bg-slate-800 h-[500px] overflow-y-auto text-left ltr" style={{ direction: 'ltr' }}>
               <div className="markdown-body dark:prose-invert">
                 <ReactMarkdown>{markdown}</ReactMarkdown>
               </div>

@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useEffect } from 'react';
 import { 
@@ -249,7 +248,7 @@ export const PasswordGenerator: React.FC<PasswordGeneratorProps> = ({ lang, onAd
                 style={{ direction: 'ltr' }}
               >
                 <div className="flex items-center gap-2.5">
-                  <span className="text-[10px] text-slate-400 font-bold bg-slate-200 dark:bg-slate-850 w-5 h-5 rounded-full flex items-center justify-center">
+                  <span className="text-[10px] text-slate-400 font-bold bg-slate-200 dark:bg-slate-800 w-5 h-5 rounded-full flex items-center justify-center">
                     {idx + 1}
                   </span>
                   <span className="font-mono text-sm font-semibold select-all text-slate-800 dark:text-slate-200 block truncate">

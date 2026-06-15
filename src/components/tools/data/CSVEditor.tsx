@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useRef } from 'react';
 import { 
@@ -204,6 +203,7 @@ export const CSVEditor: React.FC<CSVEditorProps> = ({ lang, onAddHistoryItem }) 
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 
     if (onAddHistoryItem) {
       onAddHistoryItem({

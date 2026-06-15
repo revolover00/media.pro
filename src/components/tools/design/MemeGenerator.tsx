@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
 import { 
@@ -157,7 +156,8 @@ export const MemeGenerator: React.FC<MemeGeneratorProps> = ({ lang, onAddHistory
       a.download = filename;
       document.body.appendChild(a);
       a.click();
-      document.body.removeChild(a);
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 
       showLocalToast(isAr ? 'مبارك! تم دمج الميم وتنزيله!' : 'Meme rendered and saved!');
 

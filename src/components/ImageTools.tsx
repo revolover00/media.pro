@@ -26,7 +26,7 @@ export const ImageTools: React.FC<ImageToolsProps> = ({ toolType, onAddHistoryIt
   const [filePreview, setFilePreview] = useState<string>('');
   const [originalDims, setOriginalDims] = useState<{ width: number; height: number } | null>(null);
   
-  const [targetFormat, setTargetFormat] = useState<'image/jpeg' | 'image/png' | 'image/webp'>('image/webp');
+  const [targetFormat, setTargetFormat] = useState<string>('image/jpeg');
   const [quality, setQuality] = useState<number>(0.8);
   const [compressRatio, setCompressRatio] = useState<number>(0.6);
 
@@ -181,7 +181,7 @@ export const ImageTools: React.FC<ImageToolsProps> = ({ toolType, onAddHistoryIt
 
     let extension = 'png';
     if (toolType === 'convert') {
-      extension = targetFormat.split('/')[1];
+      extension = targetFormat.split('/')[1]; if (extension === 'x-icon') extension = 'ico';
     } else if (toolType === 'compress') {
       extension = file.type === 'image/jpeg' ? 'jpg' : 'webp';
     } else {
@@ -228,9 +228,9 @@ export const ImageTools: React.FC<ImageToolsProps> = ({ toolType, onAddHistoryIt
       {!file ? (
         <UploadZone
           onFilesSelected={handleFileDrop}
-          accept="image/png, image/jpeg, image/webp"
+          accept="image/*"
           title="اسحب صورتك هنا أو انقر لتحديد صورة"
-          subtitle="ندعم صيغ الصور PNG, JPG, JPEG, WEBP حتى حجم 50 ميجابايت"
+          subtitle="ندعم جميع صيغ الصور (PNG, JPG, WEBP, GIF, BMP, TIFF, ICO, إلخ) حتى حجم 50 ميجابايت"
           maxSizeMB={50}
         />
       ) : (
@@ -246,27 +246,36 @@ export const ImageTools: React.FC<ImageToolsProps> = ({ toolType, onAddHistoryIt
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-gray-600 block">الصيغة المستهدفة</label>
-                    <div className="grid grid-cols-3 gap-2">
-                      {(['image/webp', 'image/jpeg', 'image/png'] as const).map((fmt) => (
+                    <div className="grid grid-cols-4 gap-2">
+                      {[
+                        { mime: 'image/jpeg', label: 'JPG' },
+                        { mime: 'image/png', label: 'PNG' },
+                        { mime: 'image/webp', label: 'WEBP' },
+                        { mime: 'image/gif', label: 'GIF' },
+                        { mime: 'image/bmp', label: 'BMP' },
+                        { mime: 'image/tiff', label: 'TIFF' },
+                        { mime: 'image/x-icon', label: 'ICO' },
+                        { mime: 'image/avif', label: 'AVIF' }
+                      ].map((fmt) => (
                         <button
-                          key={fmt}
-                          id={`target-format-${fmt.split('/')[1]}`}
-                          onClick={() => setTargetFormat(fmt)}
+                          key={fmt.mime}
+                          id={`target-format-${fmt.mime.split('/')[1]}`}
+                          onClick={() => setTargetFormat(fmt.mime)}
                           className={`
-                            py-3 px-2 rounded-xl text-xs font-bold transition-all border
-                            ${targetFormat === fmt 
+                            py-2 px-1 rounded-xl text-xs font-bold transition-all border
+                            ${targetFormat === fmt.mime 
                               ? 'bg-purple-600 text-white border-purple-600 shadow-md shadow-purple-100' 
                               : 'bg-white text-gray-700 border-gray-200 hover:border-purple-350'
                             }
                           `}
                         >
-                          {fmt === 'image/jpeg' ? 'JPEG' : fmt === 'image/png' ? 'PNG' : 'WEBP'}
+                          {fmt.label}
                         </button>
                       ))}
                     </div>
                   </div>
 
-                  {targetFormat !== 'image/png' && (
+                  {!['image/png', 'image/gif', 'image/bmp', 'image/x-icon'].includes(targetFormat) && (
                     <div className="space-y-2 pt-2">
                       <div className="flex justify-between items-center text-xs text-gray-600">
                         <span className="font-bold">جودة الصورة النهائية</span>

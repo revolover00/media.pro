@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
 import { 
@@ -242,6 +241,7 @@ export const AudioExtractor: React.FC<AudioExtractorProps> = ({ lang, onAddHisto
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   };
 
   return (

@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useEffect } from 'react';
 import { 
@@ -78,6 +77,7 @@ export const JSONFormatter: React.FC<JSONFormatterProps> = ({ lang, onAddHistory
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 
     if (onAddHistoryItem) {
       onAddHistoryItem({

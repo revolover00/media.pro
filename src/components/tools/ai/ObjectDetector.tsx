@@ -334,7 +334,7 @@ export const ObjectDetector: React.FC<ObjectDetectorProps> = ({ lang, onAddHisto
               </div>
             ) : (
               <div className="text-center space-y-4">
-                <div className="bg-purple-50 dark:bg-slate-750 text-purple-600 dark:text-purple-300 p-4 rounded-full inline-block">
+                <div className="bg-purple-50 dark:bg-slate-700 text-purple-600 dark:text-purple-300 p-4 rounded-full inline-block">
                   <ImageIcon className="w-8 h-8" />
                 </div>
                 <div>
@@ -401,7 +401,7 @@ export const ObjectDetector: React.FC<ObjectDetectorProps> = ({ lang, onAddHisto
                 max="90"
                 value={minConfidence}
                 onChange={(e) => setMinConfidence(Number(e.target.value))}
-                className="w-full h-1.5 bg-slate-200 dark:bg-slate-750 accent-rose-500 rounded-lg cursor-pointer"
+                className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 accent-rose-500 rounded-lg cursor-pointer"
               />
             </div>
 

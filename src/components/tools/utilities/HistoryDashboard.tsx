@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useMemo } from 'react';
 import { 
@@ -111,9 +110,9 @@ export const HistoryDashboard: React.FC<HistoryDashboardProps> = ({
       if (activeFilter === 'all') return matchesSearch;
       if (activeFilter === 'image' && item.type === 'image') return matchesSearch;
       if (activeFilter === 'pdf' && item.type === 'pdf') return matchesSearch;
-      if (activeFilter === 'ai' && item.type === 'ai') return matchesSearch;
-      if (activeFilter === 'media' && item.type === 'video') return matchesSearch;
-      if (activeFilter === 'other' && !['image', 'pdf', 'ai', 'video'].includes(item.type || '')) return matchesSearch;
+      if (activeFilter === 'ai' && (item.type as any) === 'ai') return matchesSearch;
+      if (activeFilter === 'media' && ((item.type as any) === 'video' || item.type === 'media')) return matchesSearch;
+      if (activeFilter === 'other' && !['image', 'pdf', 'ai', 'video', 'media'].includes(item.type || '')) return matchesSearch;
 
       return false;
     }).slice(0, 100); // Max 100 records limit
@@ -293,7 +292,7 @@ export const HistoryDashboard: React.FC<HistoryDashboardProps> = ({
               <button
                 key={tab.id}
                 onClick={() => setActiveFilter(tab.id)}
-                className={`py-1 px-3 rounded-lg cursor-pointer transition border-0 ${activeFilter === tab.id ? 'bg-white dark:bg-slate-850 text-rose-550 dark:text-white shadow-xs font-bold' : 'text-slate-400'}`}
+                className={`py-1 px-3 rounded-lg cursor-pointer transition border-0 ${activeFilter === tab.id ? 'bg-white dark:bg-slate-800 text-rose-550 dark:text-white shadow-xs font-bold' : 'text-slate-400'}`}
               >
                 {tab.label}
               </button>

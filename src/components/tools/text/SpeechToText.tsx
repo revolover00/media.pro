@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import { 
@@ -150,6 +149,7 @@ export const SpeechToText: React.FC<SpeechToTextProps> = ({ lang, onAddHistoryIt
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
     URL.revokeObjectURL(url);
   };
 

@@ -1,8 +1,7 @@
-'use client';
 
 import React, { useState, useRef } from 'react';
 import { 
-  FileShield, 
+  ShieldCheck, 
   Trash2, 
   Download, 
   Compass, 
@@ -95,7 +94,7 @@ export const MetadataScrubber: React.FC<MetadataScrubberProps> = ({ lang, onAddH
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFiles = Array.from(e.target.files || []);
+    const selectedFiles = Array.from(e.target.files || []) as File[];
     const mapped = selectedFiles.map(f => ({
       id: Math.random().toString(36).substring(4),
       file: f,
@@ -109,7 +108,7 @@ export const MetadataScrubber: React.FC<MetadataScrubberProps> = ({ lang, onAddH
 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
-    const droppedFiles = Array.from(e.dataTransfer.files || []);
+    const droppedFiles = Array.from(e.dataTransfer.files || []) as File[];
     const mapped = droppedFiles.map(f => ({
       id: Math.random().toString(36).substring(4),
       file: f,
@@ -222,6 +221,7 @@ export const MetadataScrubber: React.FC<MetadataScrubberProps> = ({ lang, onAddH
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
     URL.revokeObjectURL(url);
   };
 
@@ -243,6 +243,7 @@ export const MetadataScrubber: React.FC<MetadataScrubberProps> = ({ lang, onAddH
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
     URL.revokeObjectURL(url);
   };
 
@@ -286,7 +287,7 @@ export const MetadataScrubber: React.FC<MetadataScrubberProps> = ({ lang, onAddH
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-50 dark:border-slate-800/80 pb-4">
         <div className="flex items-center gap-3">
           <div className="bg-purple-600/10 p-3 rounded-2xl text-purple-600">
-            <FileShield className="w-6 h-6 animate-pulse" />
+            <ShieldCheck className="w-6 h-6 animate-pulse" />
           </div>
           <div>
             <h2 className="text-lg font-bold text-slate-900 dark:text-white">

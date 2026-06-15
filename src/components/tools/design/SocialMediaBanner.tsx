@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
 import { 
@@ -178,6 +177,7 @@ export const SocialMediaBanner: React.FC<SocialMediaBannerProps> = ({ lang, onAd
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 
     showLocalToast(isAr ? 'تهانينا! تم توليد وتصدير البنر بأعلى دقة!' : 'High resolution social header exported!');
 
@@ -249,7 +249,7 @@ export const SocialMediaBanner: React.FC<SocialMediaBannerProps> = ({ lang, onAd
                   <button
                     key={plat.id}
                     onClick={() => setPlatformId(plat.id)}
-                    className={`flex items-center gap-1.5 p-2.5 rounded-xl border-2 text-left text-xs transition cursor-pointer font-bold ${isActive ? 'bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-500 text-slate-900 dark:text-white' : 'bg-slate-50 border-slate-100 dark:bg-slate-850 dark:border-slate-800 hover:border-slate-200 text-slate-600'}`}
+                    className={`flex items-center gap-1.5 p-2.5 rounded-xl border-2 text-left text-xs transition cursor-pointer font-bold ${isActive ? 'bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-500 text-slate-900 dark:text-white' : 'bg-slate-50 border-slate-100 dark:bg-slate-800 dark:border-slate-800 hover:border-slate-200 text-slate-600'}`}
                   >
                     <PlatIcon className={`w-4 h-4 ${isActive ? 'text-emerald-500' : 'text-slate-400'}`} />
                     <span className="truncate">{isAr ? plat.nameAr.split(' ')[0] : plat.nameEn.split(' ')[0]}</span>

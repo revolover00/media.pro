@@ -588,7 +588,7 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ onAddHistoryItem }) =>
               {/* Text Watermarking details */}
               <div className="space-y-4 pt-3 border-t border-gray-200/50">
                 <div className="flex items-center gap-1.5 font-bold text-sm text-purple-950">
-                  <Type className="w-4.5 h-4.5 text-purple-600" />
+                  <Type className="w-[18px] h-[18px] text-purple-600" />
                   <span>إضافة نصوص وعلامات مائية واضحة</span>
                 </div>
 
@@ -692,7 +692,7 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ onAddHistoryItem }) =>
                   onClick={handleDownload}
                   className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-extrabold py-3.5 px-6 rounded-2xl shadow-lg hover:opacity-95 transition-all text-sm cursor-pointer"
                 >
-                  <Download className="w-4.5 h-4.5" />
+                  <Download className="w-[18px] h-[18px]" />
                   <span>تطبيق وتحميل الصورة المعدلة</span>
                 </button>
               </div>

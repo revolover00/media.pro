@@ -29,7 +29,7 @@ export function getImageDimensions(file: File): Promise<{ width: number; height:
 
 export async function convertImage(
   file: File,
-  outputType: 'image/jpeg' | 'image/png' | 'image/webp',
+  outputType: string,
   quality: number
 ): Promise<{ blob: Blob; dataUrl: string }> {
   const objectUrl = URL.createObjectURL(file);

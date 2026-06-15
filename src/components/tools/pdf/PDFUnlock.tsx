@@ -30,6 +30,13 @@ export const PDFUnlock: React.FC<PDFUnlockProps> = ({ lang, onAddHistoryItem }) 
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [result, setResult] = useState<{ blob: Blob; url: string; size: number } | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (result && result.url) URL.revokeObjectURL(result.url);
+    };
+  }, [result]);
+
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -325,7 +332,7 @@ export const PDFUnlock: React.FC<PDFUnlockProps> = ({ lang, onAddHistoryItem }) 
                 </div>
               ) : (
                 <>
-                  <Unlock className="w-4.5 h-4.5 text-purple-200" />
+                  <Unlock className="w-[18px] h-[18px] text-purple-200" />
                   <span>{t.unlockBtn}</span>
                 </>
               )}

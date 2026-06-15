@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useEffect } from 'react';
 import { 
@@ -40,8 +39,8 @@ export const VideoToImages: React.FC<VideoToImagesProps> = ({ lang, onAddHistory
   const [videoHeight, setVideoHeight] = useState<number>(0);
 
   // Settings
-  const [intervalType, setIntervalType] = useState<'seconds' | 'frame_count'>('seconds');
-  const [intervalSeconds, setIntervalSeconds] = useState<number>(2); // Each 2s
+  const [extractMode, setExtractMode] = useState<'seconds' | 'frame_count'>('seconds');
+  const [extractSeconds, setExtractSeconds] = useState<number>(2); // Each 2s
   const [targetCount, setTargetCount] = useState<number>(10); // Exactly 10 frames
   const [maxOutputWidth, setMaxOutputWidth] = useState<number>(640);
 
@@ -89,11 +88,11 @@ export const VideoToImages: React.FC<VideoToImagesProps> = ({ lang, onAddHistory
     // Calculate frame offsets in seconds
     const timestamps: number[] = [];
 
-    if (intervalType === 'seconds') {
+    if (extractMode === 'seconds') {
       let current = 0.5; // skip absolute initial black frame
       while (current < videoDuration) {
         timestamps.push(current);
-        current += intervalSeconds;
+        current += extractSeconds;
       }
     } else {
       // Exactly N frames symmetrically across length
@@ -171,6 +170,7 @@ export const VideoToImages: React.FC<VideoToImagesProps> = ({ lang, onAddHistory
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   };
 
   const downloadAllAsZip = async () => {
@@ -192,7 +192,8 @@ export const VideoToImages: React.FC<VideoToImagesProps> = ({ lang, onAddHistory
       a.download = `${videoFile?.name.split('.')[0] || 'forged'}_extracted_frames.zip`;
       document.body.appendChild(a);
       a.click();
-      document.body.removeChild(a);
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
       URL.revokeObjectURL(blobUrl);
 
       // Add to operations history logs
@@ -351,34 +352,34 @@ export const VideoToImages: React.FC<VideoToImagesProps> = ({ lang, onAddHistory
               <div className="grid grid-cols-2 gap-2 bg-slate-50 dark:bg-slate-900 p-1 rounded-xl">
                 <button
                   type="button"
-                  onClick={() => setIntervalType('seconds')}
-                  className={`py-1.5 rounded-lg text-[10px] font-black transition-all cursor-pointer ${intervalType === 'seconds' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-850'}`}
+                  onClick={() => setExtractMode('seconds')}
+                  className={`py-1.5 rounded-lg text-[10px] font-black transition-all cursor-pointer ${extractMode === 'seconds' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-850'}`}
                 >
                   {isAr ? 'كل خطوة ثواني' : 'Every N seconds'}
                 </button>
                 <button
                   type="button"
-                  onClick={() => setIntervalType('frame_count')}
-                  className={`py-1.5 rounded-lg text-[10px] font-black transition-all cursor-pointer ${intervalType === 'frame_count' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-850'}`}
+                  onClick={() => setExtractMode('frame_count')}
+                  className={`py-1.5 rounded-lg text-[10px] font-black transition-all cursor-pointer ${extractMode === 'frame_count' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-850'}`}
                 >
                   {isAr ? 'عدد لقطات ثابت' : 'Fixed frames loop'}
                 </button>
               </div>
             </div>
 
-            {intervalType === 'seconds' ? (
+            {extractMode === 'seconds' ? (
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-slate-550 dark:text-slate-300 flex justify-between">
                   <span>{isAr ? 'كل كم من ثانية يتم الالتقاط؟' : 'Capture Step Interval'}</span>
-                  <span className="text-purple-600 font-mono">كل {intervalSeconds} ثانية</span>
+                  <span className="text-purple-600 font-mono">كل {extractSeconds} ثانية</span>
                 </label>
                 <input
                   type="range"
                   min={0.5}
                   max={10}
                   step={0.5}
-                  value={intervalSeconds}
-                  onChange={(e) => setIntervalSeconds(parseFloat(e.target.value))}
+                  value={extractSeconds}
+                  onChange={(e) => setExtractSeconds(parseFloat(e.target.value))}
                   className="w-full accent-purple-600 cursor-pointer"
                 />
               </div>

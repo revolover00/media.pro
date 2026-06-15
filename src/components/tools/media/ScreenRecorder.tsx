@@ -1,4 +1,3 @@
-'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
 import { 
@@ -212,6 +211,7 @@ export const ScreenRecorder: React.FC<ScreenRecorderProps> = ({ lang, onAddHisto
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   };
 
   const clearSession = () => {
