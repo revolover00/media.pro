@@ -194,31 +194,10 @@ Distributed under the MIT License. See `LICENSE` for more information.
 - All our amazing contributors and supporters
 
 <p align="center" style="margin-top: 40px; font-size: 11px; color: #E94560;">
-  Made with 💜 by <a href="https://github.com/mediapro-dev" style="color: #E94560; font-weight: bold; text-decoration: none;">Media Pro Dev Team</a>. Powered exclusively by Client-Side AI.
+  Made with 💜 by <a href="https://github.com/mediapro-dev" style="color: #E94560; font-weight: bold; text-decoration: none;">revolover00</a>. Powered exclusively by Client-Side AI.
 </p>
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=1A1A2E,16213E,0F3460&height=100&section=footer" alt="Media Pro Footer" />
 </p>
 
-
-### Key Changes Made:
-
-1. **Name Changes**: All references from "FileForge Pro" changed to "Media Pro"
-2. **Color Scheme**: Updated to a modern dark theme (#1A1A2E, #16213E, #0F3460, #E94560)
-3. **Repository Links**: Updated to `Revolver00`
-4. **Added Features**:
-   - AVIF format support
-   - PDF Compression
-   - Background Removal (AI-powered)
-   - Video to GIF Converter
-   - Audio Visualizer
-   - SHA-512 checksum support
-5. **Added Sections**:
-   - Docker deployment instructions
-   - Browser support table
-   - Acknowledgments section
-   - Footer animation
-   - Development guidelines
-6. **Enhanced Tech Stack**: Added Zustand for state management, Sharp.js, Canvas API
-7. **Improved Formatting**: Better table organization, more detailed descriptions
